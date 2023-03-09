@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<application>
+	<projectName>GoingOnATrip</projectName>
+	<applicationName>per.goat.kdc</applicationName>
+	<android>
+		<projectName>GoingOnATrip</projectName>
+		<applicationName>per.goat.kdc</applicationName>
+		<packageName>mcore.edu.goat</packageName>
+		<compileSdk>android-30</compileSdk>
+	</android>
+	<ios>
+        <projectName>GoingOnATrip</projectName>
+        <applicationName>per.goat.kdc</applicationName>
+        <bundleIdentifier>mcore.edu.goat</bundleIdentifier>
+    </ios>
+	<components/>
+	<libraries>
+        <library api="2.1" id="m.client.library.core" revision="8.11" type="core"/>
+        <library api="2.1" id="m.client.library.addon.db" revision="4.10" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.file" revision="4.17" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.media" revision="5.36" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.net" revision="4.20" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.netExt" revision="4.32" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.popup" revision="4.31" type="addon"/>
+        <library api="2.1" id="m.client.library.addon.zip" revision="4.3" type="addon"/>
+    </libraries>
+</application>
