@@ -1,16 +1,29 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import Router from "vue-router";
+import Define from "@/common/define";
+import EventBus from "@/common/EventBus";
 
-// lazyload 적용
-// () => import(/* webpackChunkName: "intro" */'views/intro');
+const login = () => import("../views/Login/login.vue");
 
 Vue.use(Router);
 
 const router = new Router({
-  mode: 'hash',
+  mode: "hash",
   // base: '/', // only history mode
   routes: [
-    // { path: '/', name: 'intro', component: intro },
+    {
+      path: "/",
+      redirect: "/login",
+    },
+    {
+      path: "/login",
+      name: "login page",
+      component: login,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "dashboard",
+      },
+    },
   ],
 });
 
