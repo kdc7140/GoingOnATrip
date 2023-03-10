@@ -1,0 +1,25 @@
+/****** Login Page Start *****/
+.content.login{position: relative;height:100%;padding-top:13vh;}
+@media only screen and (max-height:800px){
+  .content.login{padding-top:4vh;}
+}
+@media only screen and (max-height:700px){
+  .content.login{padding-top:5vh;}
+}
+.content.login > *{display: block;}
+.content.login .scrollBox{padding-bottom:9rem ;}
+.login h2{padding-left:.8rem;color:var(--default-black);font-size:2.8rem;font-weight: bold;}
+.login h2 + p{margin-top: .6rem;padding-left:.8rem;color:var(--default-black);font-size:1.6rem;;}
+.login section.topline{margin-top: 3.2rem;;padding-top:3.6rem;}
+.login section.topline .toggle + *{margin-top: 3.2rem;}
+.login section.topline > input + input{margin-top: 1.2rem;}
+.login section.topline input + button{margin-top: 4rem;}
+.login section.topline > button + button{margin-top: 1.6rem;}
+.login section.topline > button + p{margin-top: 2.2rem;}
+.login .btn, .login input.ipt-line{height:5.2rem;}
+.login .btn{font-size:1.5rem;}
+
+.login-foot{position: absolute;bottom:0;left:2rem;right:0;padding:2rem 2rem 2rem 0;text-align:center;border-top: 1px solid var(--default-eee);background-color: #fff;}
+.login-foot *{color:var(--text-999);font-size:1.2rem;}
+.login-foot .copyright{font-size:1.2rem;line-height: 1.09;margin-top: .8rem;}
+/****** Login Page End *****/
