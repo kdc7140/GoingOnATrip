@@ -4,6 +4,7 @@ import Define from "@/common/define";
 import EventBus from "@/common/EventBus";
 
 const login = () => import("../views/Login/login.vue");
+const intro = () => import("../views/Login/intro.vue");
 
 Vue.use(Router);
 
@@ -19,6 +20,15 @@ const router = new Router({
       path: "/login",
       name: "login page",
       component: login,
+      meta: {
+        layout: Define.LAYOUT_TYPE.EMPTY,
+        className: "dashboard",
+      },
+    },
+    {
+      path: "/intro",
+      name: "intro page",
+      component: intro,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
         className: "dashboard",

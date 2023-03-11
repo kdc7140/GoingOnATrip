@@ -1,12 +1,14 @@
-import './assets/css/pageStyle.css';
-import "./assets/css/style.css";
-import "./assets/scss/style.scss";
+
 
 import Vue from 'vue';
 import App from './App';
 import store from './store';
 import router from './router';
 import plugins from './plugin';
+
+import './assets/css/pageStyle.css';
+import "./assets/css/sideMenu.css";
+import './assets/css/popup.css';
 
 Vue.config.productionTip = false;
 

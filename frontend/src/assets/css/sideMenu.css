@@ -1,0 +1,47 @@
+.header{position:sticky;top:0;z-index:20;background-color: white;}
+header button{position:absolute;top:0;width:3rem;height:3.6rem;font-size: 0;text-indent: -999rem;}
+header button.btn-last{right:.2rem;}
+/*header button.btn-last.second{right:4.4rem;}*/
+header button.menu{background-image: url('../img/title-menu.png');}
+header button{background-repeat: no-repeat;background-size: 2.3rem auto;background-color:white;border: none}
+header button.btn-last{background-position:center;}
+
+header{position: relative;z-index: 12;height:3.6rem;border-bottom: 1px solid black}
+header + h1{display:block;padding:1.2rem 2rem 1.6rem 2rem;color:var(--default-black);font-weight:bold;font-size:2.4rem;line-height:1;z-index: 11;}
+
+
+/* side menu */
+.side-menu-wr{position:fixed;top:0;left:0;width:100%;height:100%;z-index:13;background: #fff;/*overflow:hidden;*/}
+.side-menu-wr.show{animation: slide-in-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;}
+@keyframes slide-in-right {
+  0% {transform: translateX(100%);}
+  100% {transform: translateX(0);}
+}
+.side-menu-wr.close{animation: slide-out-right 0.3s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;}
+@keyframes slide-out-right {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(100%);}
+}
+
+.header.sideon ~ .content{z-index:1 !important;}
+
+/* 메뉴 디자인 변경 */
+.side-menu-wr{width:100%;height:100%;}
+.side-menu-wr > *{padding-left:2rem !important;}
+
+.side-menu-top{padding-top:2rem;background-color: var(--primary-black);border-radius: 0 0 4rem 0;}
+.side-menu-top > *{display: block;}
+
+/* .side-menu-top > button[class *= "side-menu"] {} */
+.side-menu-top .side-menu-close{position:absolute;right:1rem;top:1rem;width:2.8rem;height:2.8rem;font-size:0;text-indent:-9999em;background:url('../img/title-close.png') no-repeat center center;background-size:2.8rem auto;border:none;}
+
+.side-menu-title{position:absolute;left:1rem;top:1.3rem;width:10rem;height:2.8rem;font-size: 2rem;padding: 0 0 0 1.5rem}
+
+.side-menu-list{margin-right:1.6rem;}
+.side-menu-list p{margin:0 0 0.3rem 0;height:1rem;}
+
+.side-menu{height:calc(100% - 7.6rem);padding:1.8rem 2rem 2rem;}
+.side-menu div{padding-top:1rem;}
+/*.side-menu div + div{margin-top: 1rem;}*/
+.side-menu p{padding:0.8rem 1.6rem 0.7rem;border-radius:0.8rem;background-color:lightgrey;font-size:1rem;color: var(--text-666);}
+.side-menu button{display:block;width:100%;height:100%;padding:0.5rem 0 0.5rem 1.6rem;border:none var(--default-eee);text-align:left;font-size:1rem;font-weight: 500;color:var(--primary-black);background-color: white;}
