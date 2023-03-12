@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="logo"><img src="../../assets/img/logo.png"></div>
+    <div class="logo"><img src="../../assets/img/br-logo.png"></div>
 
     <div class="login">
       <div>
@@ -16,23 +16,20 @@
       <button class="btn_login">Log in</button>
     </div>
     <div class="btn_footer">
-      <button>회원가입</button>
-      <button>비밀번호변경</button>
+      <button @click="goMovePage('regMb')">회원가입</button>
+      <button @click="goMovePage('chpw')">비밀번호변경</button>
     </div>
   </div>
-   
 </template>
 
 <script>
 
-import CommonUtil from '@/common/commonUtil.js';
 
 export default {
-  name: "Example",
+  name: "login",
   data() {
     return {
-      openActive : false,
-      testData : 0,
+
     };
   },
   
@@ -45,10 +42,10 @@ export default {
   },
 
   methods: {
-
-    async apiTest(){
-			console.log(rst);
-    },
+    //화면이동
+    goMovePage(link){
+      this.$router.push(link);
+    }
 
   },
 
