@@ -5,6 +5,8 @@ import EventBus from "@/common/EventBus";
 
 const login = () => import("../views/Login/login.vue");
 const intro = () => import("../views/Login/intro.vue");
+const chPw = () => import("../views/Login/changePw.vue");
+const regMb = () => import("../views/Login/regMember.vue");
 
 Vue.use(Router);
 
@@ -29,6 +31,24 @@ const router = new Router({
       path: "/intro",
       name: "intro page",
       component: intro,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "dashboard",
+      },
+    },
+    {
+      path: "/chpw",
+      name: "change Password page",
+      component: chPw,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "dashboard",
+      },
+    },
+    {
+      path: "/regMb",
+      name: "register Member page",
+      component: regMb,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
         className: "dashboard",
