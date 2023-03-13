@@ -12,7 +12,7 @@
         <input class="pw" placeholder="비밀번호를 입력하세요.">
       </div>
     </div>
-    <div>
+    <div class="login_wrap">
       <button class="btn_login">Log in</button>
     </div>
     <div class="btn_footer">
@@ -31,6 +31,10 @@ export default {
     return {
 
     };
+  },
+
+  mounted(){
+    console.log("login");
   },
   
   computed: {
@@ -56,21 +60,35 @@ export default {
 </script>
 
 <style>
+.content{
+  margin: 15px;
+}
 .logo{
   text-align: center;
   margin-top: 30%;
 }
 input{
   width:100%;
-  height:25px;
+  height:5vh;
+  box-sizing: border-box;
+  border: 1px solid #efefef;
+  border-radius : 0.3rem;
+}
+.login{
+  margin-top: 4vh;
 }
 .login p{
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem 0 0.5rem 0.3rem;
+}
+.login_wrap{
+  box-sizing: border-box;
 }
 .btn_login{
-  margin: 15px 0 0 0;
+  margin: 10vh 0 0 0;
   width: 100%;
-  height: 25px;
+  height: 5vh;
+  border-radius : 0.3rem;
+  border: 1px solid #efefef;
 }
 .btn_footer{
   text-align: center;
