@@ -8,33 +8,40 @@ const intro = () => import("../views/Login/intro.vue");
 const chPw = () => import("../views/Login/changePw.vue");
 const regMb = () => import("../views/Login/regMember.vue");
 
+const main = () => import("../views/Main/mainBoard.vue");
+
 Vue.use(Router);
 
 const router = new Router({
   mode: "hash",
   // base: '/', // only history mode
   routes: [
+    //{
+    //  path: "/",
+    //  redirect: "/intro",
+    //},
     {
       path: "/",
-      redirect: "/login",
-    },
-    {
-      path: "/login",
-      name: "login page",
-      component: login,
-      meta: {
-        layout: Define.LAYOUT_TYPE.EMPTY,
-        className: "dashboard",
-      },
+      name: "intro",
+      component: intro,
     },
     {
       path: "/intro",
       name: "intro page",
       component: intro,
-      meta: {
-        layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "dashboard",
-      },
+      //meta: {
+      //  layout: Define.LAYOUT_TYPE.EMPTY,
+      //  className: "dashboard",
+      //},
+    },
+    {
+      path: "/login",
+      name: "login page",
+      component: login,
+      //meta: {
+      //  layout: Define.LAYOUT_TYPE.EMPTY,
+      //  className: "dashboard",
+      //},
     },
     {
       path: "/chpw",
@@ -49,6 +56,15 @@ const router = new Router({
       path: "/regMb",
       name: "register Member page",
       component: regMb,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "dashboard",
+      },
+    },
+    {
+      path: "/main",
+      name: "main page",
+      component: main,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
         className: "dashboard",

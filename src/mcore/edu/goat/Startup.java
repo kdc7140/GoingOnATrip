@@ -8,7 +8,9 @@ import m.client.android.library.core.common.CommonLibHandler;
 import m.client.android.library.core.utils.Logger;
 import android.app.Activity;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 
 /**
@@ -47,6 +49,9 @@ public class Startup extends Activity {
         
         commLibHandle.processAppInit(this);
         ////////////////////////////////////////////////////////////////////////////////    
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
 
     }
 }
