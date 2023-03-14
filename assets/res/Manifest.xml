@@ -12,9 +12,10 @@
         </update>
     </resource>
     <startpage>
-        <name>www/index.html</name>
-        <orient>default</orient>
-        <orient-tablet>default</orient-tablet>
+        <name>www/web/index.html</name>
+<!--        <name>www/html/native_sample.html</name>-->
+        <orient>port</orient>
+        <orient-tablet>port</orient-tablet>
     </startpage>
     <settings/>
     <default_action>
