@@ -1,6 +1,11 @@
 import axios from "axios";
+
+import Define from "@/common/define";
+//import CommonUtil from "@/utils/CommonUtil";
+//import NativeUtil from "@/utils/NativeUtil";
+
 import EventBus, { $popAlert, $popConfirm, $list } from "@/common/EventBus";
-import { MNetSend } from '@/common/service.api';
+import { fetchData, MNetSend } from "@/common/service.api";
 
 
 export default {
@@ -14,13 +19,18 @@ export default {
     });
 
     // vue 공통 method 주입
+    Vue.prototype.Define = Define;
+    //Vue.prototype.CommonUtil = CommonUtil;
+    //Vue.prototype.NativeUtil = NativeUtil;
     Vue.prototype.$axios = axiosInstance;
 
     Vue.prototype.$popAlert = $popAlert;
     Vue.prototype.$popConfirm = $popConfirm;
     Vue.prototype.$list = $list;
        
+    Vue.prototype.$fetchData = fetchData;
     Vue.prototype.$MNetSend = MNetSend;
+    Vue.prototype.isMorpheus = isMorpheus;
 
     /*
     * 팝업 닫는 것에 대한 헬퍼 함수

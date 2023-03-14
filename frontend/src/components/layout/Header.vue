@@ -1,9 +1,9 @@
 <template>
   <div class="header">
       <header>
-
-          <button type="button" class="btn-last menu" @click="isSideMenuOn = true">메뉴</button>
-          <!-- <button type="button" class="btn-last close">닫기</button> -->
+          <button type="button" class="btn-first back" @click="back">이전화면</button>
+          <!--<button type="button" class="btn-last menu" @click="isSideMenuOn = true">메뉴</button>-->
+          <!--<button type="button" class="btn-last close">닫기</button>-->
       </header>
       <!-- header에서 btn-first 버튼이 없는 경우 class first로 분기 -->
       <!--<h1>{{ $route.name }}</h1>-->
@@ -49,10 +49,10 @@ export default {
 };
 </script>
 <style>
-header span{
+/*header span{
   position: absolute;
   background-position: right center;
-}
+}*/
 h2{
   margin: 0;
   

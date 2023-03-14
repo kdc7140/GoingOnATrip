@@ -3,15 +3,18 @@
       
       <!-- scrollBox가 올라갔을때 stickyon / 내려갔을때 stickyoff  각각의 class 는 추가시 기존 클래스 삭제-->
       <Header :class="headerClass"></Header>
+      <Footer></Footer>
       <slot></slot>
   </div>
 </template>
 
 <script>
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
 export default {
   name: "DefaultLayout",
-  components: { Header },
+  components: { Header, Footer },
   props: {
     scrollTop : {
       type: Number,

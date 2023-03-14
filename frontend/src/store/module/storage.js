@@ -8,15 +8,14 @@ export const state = () => ({
 
 export const actions = {};
 export const mutations = {
-  FIRST_INFO(state, payload) {
-    state["FIRST_INFO"] = payload;
+  MEMBER_INFO(state, payload) {
+    state["MEMBER_INFO"] = payload;
   },
-
 };
 
 export const getters = {
-  FIRST_INFO: (st) => {
-    return st["FIRST_INFO"];
+  MEMBER_INFO: (st) => {
+    return st["MEMBER_INFO"];
   },
 };
 

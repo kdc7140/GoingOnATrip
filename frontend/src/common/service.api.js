@@ -100,6 +100,22 @@ service.interceptors.response.use(
 
 export default service;
 
+export const fetchData = (options, useJWT = true) => {
+  if (options.isFormData) {
+    const headers = options["headers"] || {};
+    headers["Content-type"] = "multipart/form-data";
+    options["headers"] = headers;
+    $loading(true); //form으로 발송할 경우 MNetSend를 타지 않기 때문에 바로 로딩바를 띄움
+  }
+  // if(useJWT && options.responseType === 'blob'){
+  //   const headers = options["headers"] || {};
+  //   headers["Content-Type"] = 'application/json;charset=UTF-8';
+  //   options["headers"] = headers;
+  //   options["responseType"] = options.responseType;
+  // }
+  return service(options);
+};
+
 
 /**
  * 모피어스 GW 서버 네이티브 HTTP 통신

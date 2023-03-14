@@ -7,7 +7,7 @@ import router from './router';
 import plugins from './plugin';
 
 import './assets/css/pageStyle.css';
-import "./assets/css/sideMenu.css";
+//import "./assets/css/sideMenu.css";
 import './assets/css/popup.css';
 
 Vue.config.productionTip = false;

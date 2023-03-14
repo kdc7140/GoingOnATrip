@@ -1,21 +1,23 @@
 <template>
   <div class="content">
-    <div class="logo"><img src="../../assets/img/br-logo.png"></div>
+    <div class="main_logo">
+      <img src="../../assets/img/br-logo.png">
+    </div>
 
     <div class="login">
       <div>
         <p>아이디</p>
-        <input class="id" placeholder="아이디를 입력하세요.">
+        <input type="text" v-model="inputId" class="id" placeholder="아이디를 입력하세요.">
       </div>
       <div>
         <p>비밀번호</p>
-        <input class="pw" placeholder="비밀번호를 입력하세요.">
+        <input type="password" v-model="inputPw" class="pw" placeholder="비밀번호를 입력하세요.">
       </div>
     </div>
     <div class="login_wrap">
-      <button class="btn_login">Log in</button>
+      <button class="btn_login" :disabled="!canLogin" @click="onLogin">Log in</button>
     </div>
-    <div class="btn_footer">
+    <div class="login_footer">
       <button @click="goMovePage('regMb')">회원가입</button>
       <button @click="goMovePage('chpw')">비밀번호변경</button>
     </div>
@@ -29,7 +31,9 @@ export default {
   name: "login",
   data() {
     return {
-
+      inputId : '',
+      inputPw : '',
+      memberList : this.$store.state.storage.MEMBER_INFO,
     };
   },
 
@@ -38,7 +42,9 @@ export default {
   },
   
   computed: {
-   
+   canLogin() {
+      return (this.inputId !== "" && this.inputPw !== "") ? true : false;
+   }
   },
 
   watch:{
@@ -49,11 +55,23 @@ export default {
     //화면이동
     goMovePage(link){
       this.$router.push(link);
+    },
+
+    onLogin(){
+      let loginCheck = "N";
+      for(let i=0; i<this.memberList.length; i++){
+        if(this.memberList[i].id == this.inputId && this.memberList[i].pw == this.inputPw){
+          loginCheck = "Y";
+          break;
+        }
+      }
+
+      if(loginCheck == "Y"){
+        this.$router.push('/main');
+      }else{
+        this.$popAlert('회원정보가 올바르지 않습니다.');
+      }
     }
-
-  },
-
-  mounted() {
 
   },
 };
@@ -63,19 +81,20 @@ export default {
 .content{
   margin: 15px;
 }
-.logo{
+.main_logo{
   text-align: center;
   margin-top: 30%;
 }
 input{
   width:100%;
-  height:5vh;
+  height:6vh;
   box-sizing: border-box;
   border: 1px solid #efefef;
   border-radius : 0.3rem;
+  padding-left: 1rem;
 }
-.login{
-  margin-top: 4vh;
+.login > div{
+  margin-top: 5vh;
 }
 .login p{
   margin: 0.5rem 0 0.5rem 0.3rem;
@@ -84,16 +103,23 @@ input{
   box-sizing: border-box;
 }
 .btn_login{
-  margin: 10vh 0 0 0;
+  margin: 9vh 0 0 0;
   width: 100%;
   height: 5vh;
   border-radius : 0.3rem;
   border: 1px solid #efefef;
+  background: #4060d4;
+  color: white;
+  height:6vh;
 }
-.btn_footer{
+.btn_login:disabled{
+  background: gray;
+}
+.login_footer{
   text-align: center;
+  margin-top: 0.5rem;
 }
-.btn_footer > button{
+.login_footer > button{
   border:none;
   background-color: white;
 }
