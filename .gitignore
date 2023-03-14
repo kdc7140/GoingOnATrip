@@ -1,0 +1,17 @@
+##폴더무시
+node_modules/
+build/
+assets/
+gradle/
+.gradle/
+
+
+##확장자무시
+*.gradle
+*.imi
+*.idea
+*.build
+
+
+##파일무시
+package-lock.json
