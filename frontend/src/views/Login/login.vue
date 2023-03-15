@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="login-wrap">
     <div class="main_logo">
       <img src="../../assets/img/br-logo.png">
     </div>
@@ -78,8 +78,11 @@ export default {
 </script>
 
 <style>
-.content{
-  margin: 15px;
+body{
+  margin: 0px;
+}
+.login-wrap{
+  padding: 10%;
 }
 .main_logo{
   text-align: center;

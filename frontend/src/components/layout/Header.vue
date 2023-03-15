@@ -49,10 +49,9 @@ export default {
 };
 </script>
 <style>
-/*header span{
-  position: absolute;
+.btn-first{
   background-position: right center;
-}*/
+}
 h2{
   margin: 0;
   

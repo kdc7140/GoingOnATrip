@@ -46,7 +46,7 @@ export default {
 	height: 100vh;
 	text-align: center;
 	background-repeat: no-repeat;
-	background-size: contain;
+	/*background-size: contain;*/
 	background-size : 100% 100%;
 }
 

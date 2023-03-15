@@ -1,9 +1,10 @@
 ##폴더무시
 node_modules/
 build/
-assets/
+web/
 gradle/
 .gradle/
+*.gradle/
 
 
 ##확장자무시
@@ -14,4 +15,4 @@ gradle/
 
 
 ##파일무시
-package-lock.json
+frontend/package-lock.json
