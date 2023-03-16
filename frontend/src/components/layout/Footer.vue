@@ -1,11 +1,11 @@
 <template>
-  <div class="footer_wrap">
-    <div class="footer">
-      <div>홈</div>
-      <div>관광</div>
-      <div>숙박</div>
-      <div>설정</div>
-    </div>
+  <div class="footer">
+    <footer>
+      <button class="footer-first">Home</button>
+      <button class="footer-second">Tour</button>
+      <button class="footer-third">Hetel</button>
+      <button class="footer-fourth">Setting</button>
+    </footer>
   </div>
 </template>
 
@@ -23,7 +23,13 @@ export default {
 </script>
 
 <style>
-.footer > div{
-  display: inline-block;
+.footer-second{
+  margin-left: 10px;
+}
+.footer-second{
+  margin-left: 10px;
+}
+.footer-fourth{
+  /*left: 50%;*/
 }
 </style>

@@ -28,7 +28,7 @@ body > div{width:100%;height:100%;}
 
 
 .header{position:sticky;top:0;z-index:20;background-color: white;}
-header button{position:absolute;top:0;width:2.5rem;height:2.5rem;font-size: 0;text-indent: -999rem;}
+header button{position:absolute;top:0;width:3rem;height:3rem;font-size: 0;text-indent: -999rem;}
 header button.btn-last{right:.2rem;}
 /*header button.btn-last.second{right:4.4rem;}*/
 header button.back{background-image: url('../img/title-back.png');}
@@ -36,9 +36,10 @@ header button.menu{background-image: url('../img/title-menu.png');}
 header button{background-repeat: no-repeat;background-size: 2rem auto;background-color:white;border: none}
 header button.btn-last{background-position:center;}
 
-header{position: relative;z-index: 12;height:2.5rem;}
+header{position: relative;z-index: 12;height:3rem;}
 header + h1{display:block;padding:1.2rem 2rem 1.6rem 2rem;color:var(--default-black);font-weight:bold;font-size:2.4rem;line-height:1;z-index: 11;}
 
 
-
-.footer_wrap{width: 100%;height:10vh;bottom: 0px;position: absolute;}
+.footer{position:fixed;bottom:0;z-index:20;background-color: white;}
+footer{position: relative;z-index: 12;height:3rem;}
+footer button{position:relative;top:0;width:3rem;height:3rem;font-size: 0;text-indent: -999rem;}

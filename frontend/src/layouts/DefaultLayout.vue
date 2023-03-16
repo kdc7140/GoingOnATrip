@@ -2,7 +2,7 @@
   <div class="content-wrap" :class="[$route.meta.className]">
       
       <!-- scrollBox가 올라갔을때 stickyon / 내려갔을때 stickyoff  각각의 class 는 추가시 기존 클래스 삭제-->
-      <Header :class="headerClass"></Header>
+      <Header></Header>
       <Footer></Footer>
       <slot></slot>
   </div>
@@ -34,12 +34,12 @@ export default {
     }
   },
   computed : {
-    headerClass(){
-      if(!this.isChange) return "";
-      else{
-        return this.scrollTop > 0 ? "stickyon" : "stickyoff"
-      }
-    }
+    //headerClass(){
+    //  if(!this.isChange) return "";
+    //  else{
+    //    return this.scrollTop > 0 ? "stickyon" : "stickyoff"
+    //  }
+    //}
   },
   methods : {
   }
