@@ -4,7 +4,7 @@
       <button class="footer-first">Home</button>
       <button class="footer-second">Tour</button>
       <button class="footer-third">Hetel</button>
-      <button class="footer-fourth">Setting</button>
+      <button class="footer-last">Setting</button>
     </footer>
   </div>
 </template>
@@ -23,13 +23,31 @@ export default {
 </script>
 
 <style>
-.footer-second{
-  margin-left: 10px;
+footer{
+  box-shadow: 3px 3px 7px grey;
+  display: flex;
+  justify-content: space-between;
+  padding: 3%;
+}
+.footer-first{
+  background-image: url("../../assets/img/ico-home.png");
+  background-size : 100% 100%;
+  border: 1px solid #ffffff;
 }
 .footer-second{
-  margin-left: 10px;
+  background-image: url("../../assets/img/ico-home.png");
+  background-size : 100% 100%;
+  border: 1px solid #ffffff;
 }
-.footer-fourth{
-  /*left: 50%;*/
+.footer-third{
+  background-image: url("../../assets/img/ico-home.png");
+  background-size : 100% 100%;
+  border: 1px solid #ffffff;
+}
+.footer-last{
+  background-image: url("../../assets/img/ico-set.png");
+  background-size : 100% 100%;
+  border: 1px solid #ffffff;
+  margin-top: 1%;
 }
 </style>
