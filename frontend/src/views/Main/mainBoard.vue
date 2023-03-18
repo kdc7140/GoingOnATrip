@@ -67,6 +67,9 @@ export default {
 }
 .menuBox-Line{
   height: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5vw 0 5vw;
 }
 .menuBox-Line > div{
   display: inline-block;
