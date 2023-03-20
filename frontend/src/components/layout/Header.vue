@@ -1,7 +1,7 @@
 <template>
   <div class="header">
       <header>
-          <button type="button" class="btn-first back" @click="back">이전화면</button>
+          <button type="button" class="btn-first back" v-if="$route.name != 'main'" @click="back">이전화면</button>
           <!--<button type="button" class="btn-last menu" @click="isSideMenuOn = true">메뉴</button>-->
           <!--<button type="button" class="btn-last close">닫기</button>-->
       </header>
@@ -44,7 +44,7 @@ export default {
     
   },
   mounted() {
-    
+    console.log(this.$route.name);
   }
 };
 </script>

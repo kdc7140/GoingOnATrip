@@ -27,7 +27,7 @@ footer{
   box-shadow: 3px 3px 7px grey;
   display: flex;
   justify-content: space-between;
-  padding: 3%;
+  padding: 1% 6% 3% 6%;
 }
 .footer-first{
   background-image: url("../../assets/img/ico-home.png");

@@ -2,7 +2,7 @@
   <div class="content-wrap" :class="[$route.meta.className]">
       
       <!-- scrollBox가 올라갔을때 stickyon / 내려갔을때 stickyoff  각각의 class 는 추가시 기존 클래스 삭제-->
-      <Header></Header>
+      <Header v-if="$route.name != 'main'"></Header>
       <Footer></Footer>
       <slot></slot>
   </div>

@@ -63,7 +63,7 @@ const router = new Router({
     },
     {
       path: "/main",
-      name: "main page",
+      name: "main",
       component: main,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
