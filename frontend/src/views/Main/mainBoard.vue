@@ -38,7 +38,7 @@ export default {
   },
 
 	mounted() {
-
+    this.callTourInfo();
   },
   
   computed: {
@@ -50,6 +50,13 @@ export default {
   },
 
   methods: {
+    async callTourInfo(){
+      let rst = await this.$MNetSend({
+        url: 'KorService1/areaCode1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=testApp&_type=json&serviceKey=rgXZ3rOUIYxsqr5KQHmmbdeuK1GLbBsVEPVgsPs1BainOEzB%2Fb4SJAwSAwSmOptsTZGS%2FftcnUAxM%2FKFjW1EXw%3D%3D',
+      });
+
+      console.log(rst);
+    }
 
   },
   
@@ -67,7 +74,7 @@ export default {
     to bottom,
     rgba(0, 0, 0, 0.0) 5%,
     rgba(20, 20, 20, 0.2) 10%,
-    rgba(20, 20, 20, 0.5) 15%,
+    rgba(20, 20, 20, 0.3) 34%,
     rgba(20, 20, 20, 0) 20%,
     rgba(20, 20, 20, 0) 100%
   ), url("../../assets/img/main-back2.png");*/
@@ -85,7 +92,7 @@ export default {
   opacity: 0.7;
   margin: 7%;
   border: 1px solid #efefef;
-  height:3vh;
+  height:4vh;
   width:70%
 }
 .menuBox{

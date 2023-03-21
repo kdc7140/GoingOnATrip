@@ -10,7 +10,7 @@ const publicPath = process.env.PUBLIC_URL || "/";
 //module.exports = defineConfig({
 const config = {
   publicPath: publicPath,
-  
+
   //build시 생성파일 frontend 폴더가 아닌 설정 경로로 설치
   outputDir: process.env.BUILD_PATH || "dist",
 
@@ -31,9 +31,9 @@ const config = {
       // 프록시 설정
       proxy: {
         // 프록시 요청을 보낼 api의 시작 부분
-        "/pushwidgetapi": {
+        "/KorService1": {
           // 프록시 요청을 보낼 서버의 주소
-          target: "https://pushappintro.kma.go.kr/",
+          target: "https://apis.data.go.kr/B551011/",
           changeOrigin: true,
         },
       },
