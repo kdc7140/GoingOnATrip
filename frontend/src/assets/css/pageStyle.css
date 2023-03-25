@@ -36,6 +36,8 @@ header button.menu{background-image: url('../img/title-menu.png');}
 header button{background-repeat: no-repeat;background-size: 2rem auto;background-color:white;border: none}
 header button.btn-last{background-position:center;}
 
+header span{position:absolute;top: 50%;transform:translate(0,-50%);margin-left: 4rem;font-size: 1.3rem;font-weight: bold;}
+
 header{position: relative;z-index: 12;height:3rem;}
 header + h1{display:block;padding:1.2rem 2rem 1.6rem 2rem;color:var(--default-black);font-weight:bold;font-size:2.4rem;line-height:1;z-index: 11;}
 

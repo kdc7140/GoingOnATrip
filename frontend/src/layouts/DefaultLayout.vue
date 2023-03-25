@@ -2,8 +2,8 @@
   <div class="content-wrap" :class="[$route.meta.className]">
       
       <!-- scrollBox가 올라갔을때 stickyon / 내려갔을때 stickyoff  각각의 class 는 추가시 기존 클래스 삭제-->
-      <Header v-if="$route.name != 'main'"></Header>
-      <Footer></Footer>
+      <Header v-if="$route.path != '/main'"></Header>
+      <Footer v-if="showYN()"></Footer>
       <slot></slot>
   </div>
 </template>
@@ -42,6 +42,13 @@ export default {
     //}
   },
   methods : {
+    showYN(){
+      if(this.$route.path != '/regMb' && this.$route.path != '/chpw'){
+        return true;
+      }else{
+        return false;
+      }
+    }
   }
 };
 </script>

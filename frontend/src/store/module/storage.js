@@ -2,7 +2,7 @@ import _ from "lodash";
 
 export const state = () => ({
 	MEMBER_INFO: [
-		{id:"kdc7140", pw:"1234"}
+		{id:"kdc7140", pw:"1234", name:'김동창', birth:'920511', phoneNum:'01073367140'}
 	],
 });
 

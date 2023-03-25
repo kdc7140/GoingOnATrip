@@ -88,7 +88,7 @@ body{
   text-align: center;
   margin-top: 30%;
 }
-input{
+.login input{
   width:100%;
   height:6vh;
   box-sizing: border-box;

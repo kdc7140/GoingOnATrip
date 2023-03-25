@@ -22,11 +22,11 @@ const router = new Router({
     //},
     {
       path: "/",
-      name: "intro",
+      name: "인트로",
       component: intro,
     },
     {
-      path: "/intro",
+      path: "/인트로",
       name: "intro page",
       component: intro,
       //meta: {
@@ -36,7 +36,7 @@ const router = new Router({
     },
     {
       path: "/login",
-      name: "login page",
+      name: "로그인",
       component: login,
       //meta: {
       //  layout: Define.LAYOUT_TYPE.EMPTY,
@@ -45,7 +45,7 @@ const router = new Router({
     },
     {
       path: "/chpw",
-      name: "change Password page",
+      name: "비밀번호 변경",
       component: chPw,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
@@ -54,7 +54,7 @@ const router = new Router({
     },
     {
       path: "/regMb",
-      name: "register Member page",
+      name: "회원가입",
       component: regMb,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
@@ -63,7 +63,7 @@ const router = new Router({
     },
     {
       path: "/main",
-      name: "main",
+      name: "메인",
       component: main,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
