@@ -82,16 +82,17 @@ export default {
         this.$popAlert('비밀번호가 일치하지 않습니다.');
       }else if(this.inputBirth.length != 6){
         this.$popAlert('생년월일 6자리를 확인해주세요');
-      }
-      else if(this.inputPhone.length != 13){
+      }else if(this.inputPhone.length != 13){
         this.$popAlert('핸드폰 번호 13자리를 확인해주세요');
+      }else{
+        
       }
     }
   }
 }
 </script>
 
-<style>
+<style scope>
 .info-box{
   padding: 5%;
 }
