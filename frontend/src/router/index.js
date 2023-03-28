@@ -10,6 +10,8 @@ const regMb = () => import("../views/Login/regMember.vue");
 
 const main = () => import("../views/Main/mainBoard.vue");
 
+const setting = () => import("../views/Setting/setting.vue");
+
 Vue.use(Router);
 
 const router = new Router({
@@ -65,6 +67,15 @@ const router = new Router({
       path: "/main",
       name: "메인",
       component: main,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "dashboard",
+      },
+    },
+    {
+      path: "/setting",
+      name: "설정",
+      component: setting,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
         className: "dashboard",

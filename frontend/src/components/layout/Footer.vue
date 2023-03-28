@@ -1,10 +1,10 @@
 <template>
   <div class="footer">
     <footer>
-      <button class="footer-first">Home</button>
-      <button class="footer-second">Tour</button>
-      <button class="footer-third">Hetel</button>
-      <button class="footer-last">Setting</button>
+      <button class="footer-first" @click="footerMovePage(1)">Home</button>
+      <button class="footer-second" @click="footerMovePage(2)">Tour</button>
+      <button class="footer-third" @click="footerMovePage(3)">Hetel</button>
+      <button class="footer-last" @click="footerMovePage(4)">Setting</button>
     </footer>
   </div>
 </template>
@@ -17,6 +17,19 @@ export default {
     footerStyle: {
       type: String,
       default: ""
+    }
+  },
+  methods:{
+    footerMovePage(idx){
+      if(idx == 1){
+
+      }else if(idx == 2){
+        
+      }else if(idx == 3){
+
+      }else if(idx == 4){
+        this.$router.push('/setting');
+      }
     }
   }
 };
