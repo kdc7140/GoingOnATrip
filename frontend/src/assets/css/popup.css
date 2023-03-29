@@ -18,7 +18,7 @@
 .no-head .pop-head{display:none;}
 .no-head .pop-body > *{font-size: 1.6rem !important;line-height: 1.5;color: var(--primary-black);}
 
-.popup:not(.popup-select) .pop-head + .pop-body >  *{width:100%;font-size: 1rem !important;line-height: 0.5;color: var(--primary-black);text-align:center;}
+.popup:not(.popup-select) .pop-head + .pop-body >  *{width:100%;font-size: 1rem !important;color: var(--primary-black);text-align:center;}
 
 /*.pop-foot{margin-top:0.5rem;}*/
 

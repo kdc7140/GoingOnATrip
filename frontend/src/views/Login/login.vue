@@ -33,12 +33,13 @@ export default {
     return {
       inputId : '',
       inputPw : '',
-      memberList : this.$store.state.storage.MEMBER_INFO,
+      memberList : this.getStorage('MEMBER_INFO'),
     };
   },
 
   mounted(){
     console.log("login");
+    console.log(this.memberList);
   },
   
   computed: {

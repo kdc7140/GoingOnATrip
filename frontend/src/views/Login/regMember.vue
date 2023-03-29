@@ -35,7 +35,7 @@
       </div>
       
       <div>
-        <button class="register-button" @click="regiMember">회원가입</button>
+        <button class="register-button" @click.stop="regiMember">회원가입</button>
       </div>
     </div>
     
@@ -47,7 +47,7 @@ export default {
   name: "regMember",
   data() {
     return {
-      regiMemberInfo: this.$store.getters['storage/MEMBER_INFO'],
+      regiMemberInfo: this.getStorage('MEMBER_INFO'),
       dupleYN : "N",
       inputId : '',
       ipnutPassword: '',
@@ -59,10 +59,16 @@ export default {
   },
   mounted(){
     console.log(this.$route.path);
-    console.log(this.regiMemberInfo);
+    console.log(this.getStorage('MEMBER_INFO'));
+  },
+  watch:{
+    inputPhone(){
+      console.log(this.inputPhone.length);
+    }
   },
   methods:{
     dupleConfirm(){
+      this.dupleYN = 'N';
       this.regiMemberInfo.forEach((item, idx) => {
         if(item.id == this.inputId){
           this.dupleYN = "Y";
@@ -72,20 +78,46 @@ export default {
       if(this.dupleYN == "Y"){
         this.$popAlert('이미 사용중인 아이디입니다.');
       }else{
-        this.$popAlert('사용가능한 아이디입니다.');
+        if(this.inputId == ''){
+          this.$popAlert('아이디를 입력해주세요.');
+        }else{
+          this.$popAlert('사용가능한 아이디입니다.');
+        }
       }
     },
-    regiMember(){
+    async regiMember(){
       if(this.dupleYN == "Y"){
-        this.$popAlert('다른 아이디를 입력해주세요.')
+        this.$popAlert('아이디 중복확인을 해주세요.');
+      }else if(this.ipnutPassword == '' || this.passwordConfirm == ''){
+        this.$popAlert('비밀번호를 입력해주세요.');
       }else if(this.ipnutPassword !== this.passwordConfirm){
         this.$popAlert('비밀번호가 일치하지 않습니다.');
       }else if(this.inputBirth.length != 6){
         this.$popAlert('생년월일 6자리를 확인해주세요');
-      }else if(this.inputPhone.length != 13){
+      }else if(this.inputPhone.length != 11){
         this.$popAlert('핸드폰 번호 13자리를 확인해주세요');
       }else{
-        
+        let dupleUserYN = 'N';
+        this.regiMemberInfo.forEach((item, idx) => {
+          if(item.name == this.inputName && item.birth == this.inputBirth && item.phoneNum == this.inputPhone){
+            dupleUserYN = "Y"
+          }
+        });
+
+        if(dupleUserYN == "Y"){
+          this.$popAlert('이미 가입된 사용자입니다.');
+        }else{
+          await this.setStorage('MEMBER_INFO', {
+            id : this.inputId,
+            pw : this.ipnutPassword,
+            name : this.inputName,
+            birth : this.inputBirth,
+            phoneNum : this.inputPhone,
+          });
+          await this.$popAlert('회원가입이 완료되었습니다. 로그인 후 이용해주세요.');
+
+          this.$router.replace('/login');
+        }
       }
     }
   }

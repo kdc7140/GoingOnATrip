@@ -9,7 +9,7 @@ export const state = () => ({
 export const actions = {};
 export const mutations = {
   MEMBER_INFO(state, payload) {
-    state["MEMBER_INFO"] = payload;
+    state["MEMBER_INFO"].push(payload);
   },
 };
 
