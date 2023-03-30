@@ -1,17 +1,29 @@
 <template>
   <div class="content">
     <div class="scrollBox">
-      
+			<div class="main-top-img">
+				<swiper :options="swiperStoreOption">
+					<swiper-slide><img src="@/assets/img/main-seoul.png"></swiper-slide>
+					<swiper-slide><img src="@/assets/img/main-gyungju.png"></swiper-slide>
+					<swiper-slide><img src="@/assets/img/main-junju.png"></swiper-slide>
+					<swiper-slide><img src="@/assets/img/main-busan.png"></swiper-slide>
+					<swiper-slide><img src="@/assets/img/main-gapyung.png"></swiper-slide>
+					<div class="swiper-store-pagination swiper-pagination" slot="pagination"></div>
+				</swiper>
+			</div>
+
       <div class="menuBox">
         <div class="menuBox-Line">
-          <div><button class="btn-main-ico hotel"></button><span>숙소</span></div>
-          <div><button class="btn-main-ico tour"></button><span>관광</span></div>
-          <div><button class="btn-main-ico map"></button><span>지도</span></div>
+          <div><button class="btn-main-ico hotel2"></button><span>숙소</span></div>
+          <div><button class="btn-main-ico tour2"></button><span>관광</span></div>
+          <div><button class="btn-main-ico map2"></button><span>지도</span></div>
+					<div><button class="btn-main-ico car2"></button><span>지도</span></div>
         </div>
         <div class="menuBox-Line">
           <div><button class="btn-main-ico hotel"></button><span>숙소</span></div>
           <div><button class="btn-main-ico tour"></button><span>관광</span></div>
           <div><button class="btn-main-ico map"></button><span>지도</span></div>
+					<div><button class="btn-main-ico map"></button><span>지도</span></div>
         </div>
       </div>
 
@@ -28,12 +40,33 @@
 
 <script>
 
+import 'swiper/css/swiper.css'
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 
 export default {
   name: "mainBoard",
+	components: {
+		Swiper,
+		SwiperSlide,
+	},
+	directives:{
+		swiper: directive
+	},
   data() {
     return {
-
+      swiperStoreOption: {
+        slidesPerView: 'auto',
+        spaceBetween: 0, 
+        centerInsufficientSlides: true,
+				autoplay:{
+					delay:3000,
+					disableOnInteraction: false,
+				},
+        pagination: {
+					el: '.swiper-store-pagination',
+					clickable: true
+				},
+      },
     };
   },
 
@@ -50,6 +83,7 @@ export default {
   },
 
   methods: {
+
     async callTourInfo(){
       let rst = await this.$MNetSend({
         url: 'KorService1/areaCode1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=testApp&_type=json&serviceKey=rgXZ3rOUIYxsqr5KQHmmbdeuK1GLbBsVEPVgsPs1BainOEzB%2Fb4SJAwSAwSmOptsTZGS%2FftcnUAxM%2FKFjW1EXw%3D%3D',
@@ -69,28 +103,14 @@ export default {
   height: 100%;
   position: relative;
 }
-.scrollBox::before{
-  /*background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.0) 5%,
-    rgba(20, 20, 20, 0.2) 10%,
-    rgba(20, 20, 20, 0.3) 34%,
-    rgba(20, 20, 20, 0) 20%,
-    rgba(20, 20, 20, 0) 100%
-  ), url("../../assets/img/main-back2.png");*/
-  background-image: url("../../assets/img/main-back2.png");
-  background-repeat: no-repeat;
-  background-size : 100%;
-  position: absolute;
+.main-top-img img{
   width: 100%;
-  height: 100%;
-  content: '';
-  opacity:0.7;
+	height: 13rem;
 }
 .main-search{
   background-color: white;
   opacity: 0.7;
-  margin: 7%;
+  margin: 5%;
   border: 1px solid #efefef;
   height:4vh;
   width:70%
@@ -98,20 +118,16 @@ export default {
 .menuBox{
   position: relative;
   text-align: center;
-  height: 22vh;
-  /*background: #3984db;*/
-  background: white;
-  margin: 6% 6% 6% 6%;
-  border-radius: 20px;
+  height: 10rem;
+  /*margin: 6%;*/
   padding: 3% 0 3% 0;
-  box-shadow: 1px 3px 3px grey;
   
 }
 .menuBox-Line{
   height: 50%;
   display: flex;
   justify-content: space-between;
-  padding: 0 7vw 0 7vw;
+	padding-bottom: .8rem;
 }
 .menuBox-Line > div{
   display: inline-block;
@@ -121,12 +137,12 @@ export default {
   display: inline-block;
   background-color: white;
   border: 1px solid #efefef;
-  border-radius: 30px;
-  width: 3rem;
-  height: 60%;
+  /*border-radius: 30px;*/
+  width: 4rem;
+  height: 70%;
   margin: .5rem .8rem 0.3rem .8rem;
   padding: 3% 0 3% 0;
-  box-shadow: 1px 1px 4px grey;
+  /*box-shadow: 1px 1px 4px grey;*/
 }
 .menuBox-Line span{
   display: block;
@@ -148,6 +164,27 @@ export default {
   background-image: url("../../assets/img/ico-map.png");
   background-size : 100% 100%;
 }
+.menuBox-Line .car{
+  background-image: url("../../assets/img/ico-car.png");
+  background-size : 100% 100%;
+}
+
+.menuBox-Line .hotel2{
+  background-image: url("../../assets/img/ico-hotel2.png");
+  background-size : 100% 100%;
+}
+.menuBox-Line .tour2{
+  background-image: url("../../assets/img/ico-tour2.png");
+  background-size : 100% 100%;
+}
+.menuBox-Line .map2{
+  background-image: url("../../assets/img/ico-map2.png");
+  background-size : 100% 100%;
+}
+.menuBox-Line .car2{
+  background-image: url("../../assets/img/ico-car2.png");
+  background-size : 100% 100%;
+}
 .mainBox{
   margin: 10%;
 }
@@ -155,6 +192,10 @@ export default {
 .mainBox img{
   width: 100%;
   position: relative;
+}
+.swiper-pagination-bullet{
+	background: white;
+	color:white;
 }
 
 </style>

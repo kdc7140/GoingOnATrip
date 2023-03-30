@@ -9,6 +9,7 @@ const chPw = () => import("../views/Login/changePw.vue");
 const regMb = () => import("../views/Login/regMember.vue");
 
 const main = () => import("../views/Main/mainBoard.vue");
+const main2 = () => import("../views/Main/home.vue");
 
 const setting = () => import("../views/Setting/setting.vue");
 
@@ -66,7 +67,7 @@ const router = new Router({
     {
       path: "/main",
       name: "메인",
-      component: main,
+      component: main2,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
         className: "dashboard",
