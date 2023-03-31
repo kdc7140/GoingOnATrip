@@ -69,12 +69,15 @@ export default {
   methods:{
     dupleConfirm(){
       this.dupleYN = 'N';
-      this.regiMemberInfo.forEach((item, idx) => {
-        if(item.id == this.inputId){
-          this.dupleYN = "Y";
-        }
-      });
-
+      
+      if(this.regiMemberInfo !== ''){
+        this.regiMemberInfo.forEach((item, idx) => {
+          if(item.id == this.inputId){
+            this.dupleYN = "Y";
+          }
+        });
+      }
+      
       if(this.dupleYN == "Y"){
         this.$popAlert('이미 사용중인 아이디입니다.');
       }else{
@@ -98,12 +101,14 @@ export default {
         this.$popAlert('핸드폰 번호 13자리를 확인해주세요');
       }else{
         let dupleUserYN = 'N';
-        this.regiMemberInfo.forEach((item, idx) => {
-          if(item.name == this.inputName && item.birth == this.inputBirth && item.phoneNum == this.inputPhone){
-            dupleUserYN = "Y"
-          }
-        });
-
+        if(this.regiMemberInfo !== ''){
+          this.regiMemberInfo.forEach((item, idx) => {
+            if(item.name == this.inputName && item.birth == this.inputBirth && item.phoneNum == this.inputPhone){
+              dupleUserYN = "Y"
+            }
+          });
+        }
+        
         if(dupleUserYN == "Y"){
           this.$popAlert('이미 가입된 사용자입니다.');
         }else{
@@ -127,6 +132,7 @@ export default {
 <style scope>
 .info-box{
   padding: 5%;
+  background-color: white;
 }
 .info-box-line{
   margin: 1rem 0 1rem 0;

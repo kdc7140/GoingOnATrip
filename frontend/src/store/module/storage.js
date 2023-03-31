@@ -11,6 +11,17 @@ export const mutations = {
   MEMBER_INFO(state, payload) {
     state["MEMBER_INFO"].push(payload);
   },
+  CHANGE_MEMBER_INFO(state, payload) {
+    state["CHANGE_MEMBER_INFO"].forEach((item, idx) => {
+      if (item.id == payload.id) {
+        item.id = payload.id;
+        item.pw = payload.pw;
+        item.name = payload.name;
+        item.birth = payload.birth;
+        item.phoneNum = payload.phoneNum;
+      }
+    });
+  }
 };
 
 export const getters = {

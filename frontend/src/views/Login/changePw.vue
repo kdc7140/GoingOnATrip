@@ -77,6 +77,20 @@ export default {
         
         if(idx == 1){
           //store 유저 정보 수정
+          if(this.regiMemberInfo !== ''){
+          this.regiMemberInfo.forEach((item, idx) => {
+            if(item.name == this.inputName && item.id == this.inputId){
+              this.setStorage('CHANGE_MEMBER_INFO', {
+                id : this.inputId,
+                pw : this.ipnutPassword,
+                name : this.inputName,
+                birth : item.birth,
+                phoneNum : item.phoneNum,
+              })
+            }
+          });
+        }
+
           await this.$popAlert("비밀번호가 변경되었습니다.");
           this.$router.replace('/login');
         }
@@ -95,6 +109,7 @@ export default {
 }
 .change-box{
    padding: 5%;
+   background-color: white;
 }
 .info-box-line{
   margin: 1rem 0 1rem 0;

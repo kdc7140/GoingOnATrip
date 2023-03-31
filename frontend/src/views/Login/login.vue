@@ -84,6 +84,7 @@ body{
 }
 .login-wrap{
   padding: 10%;
+  background-color: white;
 }
 .main_logo{
   text-align: center;

@@ -2,7 +2,7 @@
   <div class="content">
     <div class="scrollBox">
 			<div class="main-top-img">
-				<swiper :options="swiperStoreOption">
+				<swiper :options="swiperTopOption">
 					<swiper-slide><img src="@/assets/img/main-seoul.png"></swiper-slide>
 					<swiper-slide><img src="@/assets/img/main-gyungju.png"></swiper-slide>
 					<swiper-slide><img src="@/assets/img/main-junju.png"></swiper-slide>
@@ -17,7 +17,7 @@
           <div><button class="btn-main-ico hotel2"></button><span>숙소</span></div>
           <div><button class="btn-main-ico tour2"></button><span>관광</span></div>
           <div><button class="btn-main-ico map2"></button><span>지도</span></div>
-					<div><button class="btn-main-ico car2"></button><span>지도</span></div>
+					<div><button class="btn-main-ico car"></button><span>렌트카</span></div>
         </div>
         <div class="menuBox-Line">
           <div><button class="btn-main-ico hotel"></button><span>숙소</span></div>
@@ -28,8 +28,19 @@
       </div>
 
       <div class="mainBox">
-        <p>오늘의 여행정보</p>
-        <img src="@/assets/img/main-img.png">
+        <p>이달의 행사</p>
+				<swiper :options="swiperFestivalOption">
+					<!--<swiper-slide><img src="@/assets/img/main-img.png"></swiper-slide>
+					<swiper-slide><img src="@/assets/img/main-img.png"></swiper-slide>
+					<swiper-slide><img src="@/assets/img/main-img.png"></swiper-slide>-->
+					<template v-for="item in festivalData">
+						<swiper-slide :key="item.contentid"><img :src="item.firstimage"></swiper-slide>
+						
+					</template>
+					
+					<div class="swiper-store-pagination swiper-pagination" slot="pagination"></div>
+				</swiper>
+        
       </div>
 
       
@@ -54,7 +65,15 @@ export default {
 	},
   data() {
     return {
-      swiperStoreOption: {
+			festivalData: [],
+
+			swiperFestivalOption:{
+				slidesPerView: '1',
+        spaceBetween: 10, 
+        centerInsufficientSlides: true,
+				feedmode : true,
+			},
+      swiperTopOption: {
         slidesPerView: 'auto',
         spaceBetween: 0, 
         centerInsufficientSlides: true,
@@ -86,11 +105,13 @@ export default {
 
     async callTourInfo(){
       let rst = await this.$MNetSend({
-        url: 'KorService1/areaCode1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=testApp&_type=json&serviceKey=rgXZ3rOUIYxsqr5KQHmmbdeuK1GLbBsVEPVgsPs1BainOEzB%2Fb4SJAwSAwSmOptsTZGS%2FftcnUAxM%2FKFjW1EXw%3D%3D',
+        url: 'KorService1/searchFestival1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&eventStartDate=20230301&eventEndDate=20230331&serviceKey=rgXZ3rOUIYxsqr5KQHmmbdeuK1GLbBsVEPVgsPs1BainOEzB%2Fb4SJAwSAwSmOptsTZGS%2FftcnUAxM%2FKFjW1EXw%3D%3D',
       });
 
       console.log(rst);
-    }
+
+			this.festivalData = rst.response.body.items.item;
+    },
 
   },
   
@@ -102,6 +123,7 @@ export default {
   width:100%;
   height: 100%;
   position: relative;
+	background-color: white;
 }
 .main-top-img img{
   width: 100%;
@@ -127,18 +149,23 @@ export default {
   height: 50%;
   display: flex;
   justify-content: space-between;
-	padding-bottom: .8rem;
+	padding: 0rem 0.8rem 0rem 0.8rem;
 }
 .menuBox-Line > div{
   display: inline-block;
-  height: 100%;
+  height: 80%;
+	border: 1px solid #efefef;
+	border-radius: 30px;
+	padding-bottom: .5rem;
+	margin: .2rem;
+	border-radius: 20px;
 }
 .menuBox-Line button{
   display: inline-block;
   background-color: white;
-  border: 1px solid #efefef;
+  border: 1px solid #ffffff;
   /*border-radius: 30px;*/
-  width: 4rem;
+  width: 3rem;
   height: 70%;
   margin: .5rem .8rem 0.3rem .8rem;
   padding: 3% 0 3% 0;
@@ -186,7 +213,7 @@ export default {
   background-size : 100% 100%;
 }
 .mainBox{
-  margin: 10%;
+  margin: 6%;
 }
 
 .mainBox img{
@@ -197,5 +224,12 @@ export default {
 	background: white;
 	color:white;
 }
+
+.swiper-container {overflow: visible;}
+.swiper-slide {opacity:0.4; transition:opacity 0.3s;}
+.swiper-slide-active,
+.swiper-slide-active + .swiper-slide,
+.swiper-slide-active + .swiper-slide + .swiper-slide,
+.swiper-slide-active + .swiper-slide + .swiper-slide + .swiper-slide {opacity:1}
 
 </style>
