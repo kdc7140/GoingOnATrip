@@ -14,10 +14,10 @@
 
       <div class="menuBox">
         <div class="menuBox-Line">
-          <div><button class="btn-main-ico hotel2"></button><span>숙소</span></div>
-          <div><button class="btn-main-ico tour2"></button><span>관광</span></div>
-          <div><button class="btn-main-ico map2"></button><span>지도</span></div>
-					<div><button class="btn-main-ico car"></button><span>렌트카</span></div>
+          <div @click="movePage('/hotel')"><button class="btn-main-ico hotel2"></button><span>숙소</span></div>
+          <div @click="movePage('/tour')"><button class="btn-main-ico tour2"></button><span>관광</span></div>
+          <div @click="movePage('/map')"><button class="btn-main-ico map2"></button><span>지도</span></div>
+					<div @click="movePage('/rent')"><button class="btn-main-ico car"></button><span>렌트카</span></div>
         </div>
         <div class="menuBox-Line">
           <div><button class="btn-main-ico hotel"></button><span>숙소</span></div>
@@ -91,6 +91,7 @@ export default {
 
 	mounted() {
     this.callTourInfo();
+    console.log(this.getServiceKey());
   },
   
   computed: {
@@ -105,12 +106,16 @@ export default {
 
     async callTourInfo(){
       let rst = await this.$MNetSend({
-        url: 'KorService1/searchFestival1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&eventStartDate=20230301&eventEndDate=20230331&serviceKey=rgXZ3rOUIYxsqr5KQHmmbdeuK1GLbBsVEPVgsPs1BainOEzB%2Fb4SJAwSAwSmOptsTZGS%2FftcnUAxM%2FKFjW1EXw%3D%3D',
+        url: `KorService1/searchFestival1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&eventStartDate=20230301&eventEndDate=20230331&${this.getServiceKey()}`,
       });
 
       console.log(rst);
 
 			this.festivalData = rst.response.body.items.item;
+    },
+
+    movePage(url){
+      this.$router.push(url);
     },
 
   },

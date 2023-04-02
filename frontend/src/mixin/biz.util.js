@@ -79,5 +79,9 @@ export default {
         this.$store.commit("storage/" + key, "");
       }
     },
+
+    getServiceKey(){
+      return 'serviceKey=rgXZ3rOUIYxsqr5KQHmmbdeuK1GLbBsVEPVgsPs1BainOEzB%2Fb4SJAwSAwSmOptsTZGS%2FftcnUAxM%2FKFjW1EXw%3D%3D';
+    }
   },
 };

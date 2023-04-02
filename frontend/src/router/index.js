@@ -11,6 +11,15 @@ const regMb = () => import("../views/Login/regMember.vue");
 const main = () => import("../views/Main/mainBoard.vue");
 const main2 = () => import("../views/Main/home.vue");
 
+const hotel = () => import("../views/Accom/searchHotel.vue");
+
+const tour = () => import("../views/Tour/tour.vue");
+const tourLocation = () => import("../views/Tour/tourLocation.vue");
+
+const map = () => import("../views/Map/locMap.vue");
+
+const rent = () => import("../views/Rent/rentCar.vue");
+
 const setting = () => import("../views/Setting/setting.vue");
 
 Vue.use(Router);
@@ -52,7 +61,7 @@ const router = new Router({
       component: chPw,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "dashboard",
+        className: "chpw",
       },
     },
     {
@@ -61,7 +70,7 @@ const router = new Router({
       component: regMb,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "dashboard",
+        className: "regMb",
       },
     },
     {
@@ -70,7 +79,52 @@ const router = new Router({
       component: main2,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "dashboard",
+        className: "main",
+      },
+    },
+    {
+      path: "/hotel",
+      name: "숙소 알아보기",
+      component: hotel,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "hotel",
+      },
+    },
+    {
+      path: "/tour",
+      name: "여행정보 찾기",
+      component: tour,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "tour",
+      },
+    },
+    {
+      path: "/tourLocation",
+      name: "여행정보",
+      component: tourLocation,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "tourLocation",
+      },
+    },
+    {
+      path: "/map",
+      name: "행사정보 알아보기",
+      component: map,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "map",
+      },
+    },
+    {
+      path: "/rent",
+      name: "렌터카 찾기",
+      component: rent,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "rent",
       },
     },
     {
