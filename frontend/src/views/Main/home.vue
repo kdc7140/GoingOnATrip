@@ -16,7 +16,7 @@
         <div class="menuBox-Line">
           <div @click="movePage('/hotel')"><button class="btn-main-ico hotel2"></button><span>숙소</span></div>
           <div @click="movePage('/tour')"><button class="btn-main-ico tour2"></button><span>관광</span></div>
-          <div @click="movePage('/map')"><button class="btn-main-ico map2"></button><span>지도</span></div>
+          <div @click="movePage('/map')"><button class="btn-main-ico camping"></button><span>캠핑</span></div>
 					<div @click="movePage('/rent')"><button class="btn-main-ico car"></button><span>렌트카</span></div>
         </div>
         <div class="menuBox-Line">
@@ -217,6 +217,11 @@ export default {
   background-image: url("../../assets/img/ico-car2.png");
   background-size : 100% 100%;
 }
+.menuBox-Line .camping{
+  background-image: url("../../assets/img/ico-camping.png");
+  background-size : 100% 100%;
+}
+
 .mainBox{
   margin: 6%;
 }

@@ -9,35 +9,35 @@
       
       <div class="top-btn-box" v-show="pageDepth">
         <div>
-          <button @click="getSigunguCode(1)">서울</button>
-          <button @click="getSigunguCode(2)">인천</button>
-          <button @click="getSigunguCode(3)">대전</button>
+          <button @click="getSigunguCode(1), selectArea.si='서울시'">서울</button>
+          <button @click="getSigunguCode(2), selectArea.si='인천시'">인천</button>
+          <button @click="getSigunguCode(3), selectArea.si='대전시'">대전</button>
         </div>
         <div>
-          <button @click="getSigunguCode(4)">대구</button>
-          <button @click="getSigunguCode(5)">광주</button>
-          <button @click="getSigunguCode(7)">울산</button>
+          <button @click="getSigunguCode(4), selectArea.si='대구시'">대구</button>
+          <button @click="getSigunguCode(5), selectArea.si='광주시'">광주</button>
+          <button @click="getSigunguCode(7), selectArea.si='울산시'">울산</button>
         </div>
         <div>
-          <button @click="getSigunguCode(6)">부산</button>
+          <button @click="getSigunguCode(6), selectArea.si='부산시'">부산</button>
         </div>
       </div>
 
       <div class="bottom-btn-box" v-show="pageDepth">
         <div>
-          <button @click="getSigunguCode(31)">경기도</button>
-          <button @click="getSigunguCode(32)">강원도</button>
-          <button @click="getSigunguCode(33)">충청북도</button>
+          <button @click="getSigunguCode(31), selectArea.si='경기도'">경기도</button>
+          <button @click="getSigunguCode(32), selectArea.si='강원도'">강원도</button>
+          <button @click="getSigunguCode(33), selectArea.si='충북'">충청북도</button>
         </div>
         <div>
-          <button @click="getSigunguCode(34)">충청남도</button>
-          <button @click="getSigunguCode(35)">경상북도</button>
-          <button @click="getSigunguCode(36)">경상남도</button>
+          <button @click="getSigunguCode(34), selectArea.si='충남'">충청남도</button>
+          <button @click="getSigunguCode(35), selectArea.si='경북'">경상북도</button>
+          <button @click="getSigunguCode(36), selectArea.si='경남'">경상남도</button>
         </div>
         <div>
-          <button @click="getSigunguCode(37)">전라북도</button>
-          <button @click="getSigunguCode(38)">전라남도</button>
-          <button @click="getSigunguCode(39)">제주도</button>
+          <button @click="getSigunguCode(37), selectArea.si='전북'">전라북도</button>
+          <button @click="getSigunguCode(38), selectArea.si='전남'">전라남도</button>
+          <button @click="getSigunguCode(39), selectArea.si='제주도'">제주도</button>
         </div>
       </div>
 
@@ -49,7 +49,7 @@
         </template>-->
         <div>
           <template v-for="(item) in sigunguArr">
-            <button @click="goTourInfo(item.code)" :key="item.code">{{ item.name }}</button>
+            <button @click="goTourInfo(item.code,item.name)" :key="item.code">{{ item.name }}</button>
           </template>
         </div>
       </div>
@@ -57,13 +57,19 @@
   </div>
 </template>
 
-<script>
+<script scope>
 export default {
   name: "tourInfo",
   data(){
     return{
       pageDepth : true,
       sigunguArr: [],
+      selectArea: {
+        si: '',
+        gun: '',
+        areaCode: '',
+        sigunguCode: '',
+      }
     }
   },
   mounted(){
@@ -79,14 +85,18 @@ export default {
 
       this.pageDepth = false;
 
+      this.selectArea.areaCode = code;
       this.sigunguArr = rst.response.body.items.item;
     },
 
-    goTourInfo(code){
+    goTourInfo(code,name){
+      console.log(code,name);
+      this.selectArea.sigunguCode = code;
+      this.selectArea.gun = name;
       this.$router.push({
         path: '/tourLocation',
         query:{
-          areaCode : code,
+          selectArea : this.selectArea,
         }
       });
     },
