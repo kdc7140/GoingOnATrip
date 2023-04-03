@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contents">
     렌트카 정보
   </div>
 </template>

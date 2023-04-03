@@ -3,8 +3,8 @@
       
       <!-- scrollBox가 올라갔을때 stickyon / 내려갔을때 stickyoff  각각의 class 는 추가시 기존 클래스 삭제-->
       <Header v-if="$route.path != '/main'"></Header>
-      <Footer v-if="showYN()"></Footer>
       <slot></slot>
+      <Footer v-if="showYN()"></Footer>
   </div>
 </template>
 

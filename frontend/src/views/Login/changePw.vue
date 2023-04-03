@@ -112,7 +112,7 @@ export default {
    background-color: white;
 }
 .info-box-line{
-  margin: 1rem 0 1rem 0;
+  margin: 2rem 0 2rem 0;
 }
 .info-box-line > span{
   font-size: .9rem;
@@ -121,7 +121,7 @@ export default {
 }
 .info-box-line input{
   width:100%;
-  height:6vh;
+  height:2.5rem;
   box-sizing: border-box;
   border: 1px solid #efefef;
   border-radius : 0.3rem;
@@ -135,25 +135,25 @@ span > span{
   text-align: center;
 }
 .footer-box > .btn-next{
-  margin: 3rem .3rem .3rem .3rem;
+  margin: 8rem .3rem .3rem .3rem;
   width: 45%;
-  height: 5vh;
+  /*height: 5vh;*/
   border-radius : 0.3rem;
   border: 1px solid #efefef;
   background: #4060d4;
   color: white;
-  height:6vh;
+  height:3rem;
   font-weight: bold;
 }
 .footer-box > .btn-prev{
   margin: 3rem .3rem .3rem .3rem;
   width: 45%;
-  height: 5vh;
+  height: 3rem;
   border-radius : 0.3rem;
   border: 1px solid #efefef;
   background: #808080;
   color: white;
-  height:6vh; 
+  height:3rem; 
   font-weight: bold;
 }
 .footer-box > .btn-next:disabled{

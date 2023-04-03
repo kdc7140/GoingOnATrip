@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contents">
     <div class="scrollBox">
 			<div class="main-top-img">
 				<swiper :options="swiperTopOption">

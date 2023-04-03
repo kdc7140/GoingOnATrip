@@ -130,49 +130,28 @@ export const MNetSend = (options) => {
       headers: options.headers|| {},
   };
 
+  if (isMorpheus()) {
+    _options.url = `https://apis.data.go.kr/B551011/${_options.url}`;
+  }
+
   console.log(_options);
 
-  if (!isMorpheus()) {
-    return new Promise((resolve, reject) => {
-      _options.data = {};
-      _options.data.head = {};
-      _options.data.body = _options.param;
+  return new Promise((resolve, reject) => {
+    _options.data = {};
+    _options.data.head = {};
+    _options.data.body = _options.param;
 
-      axios.get(_options.url)
-        .then((result) => {
-          if (result.status == 200) {
-            resolve(result.data);  
-          }
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  } else {
-    return new Promise((resolve, reject) => {
-        M.net.http.send({
-            server: Define.SERVER_NAME,
-            path: _options.url,
-            method: _options.method,
-            timeout: 30000,
-            //userData: {
-            //    Authorization: _options.headers,
-            //},
-            indicator: {
-                show: false,
-                message: "Loading..",
-                cancelable: true,
-            },
-            data: _options.param,
-            success: function (recevedData, setting) {
-                resolve(recevedData); // data 바로 출력됨
-            },
-            error: function (errorCode, errorMessage, setting) {
-                reject(errorCode, errorMessage);
-            },
-        });
-    });
-  }
+    axios
+      .get(_options.url)
+      .then((result) => {
+        if (result.status == 200) {
+          resolve(result.data);
+        }
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
   
 };
 

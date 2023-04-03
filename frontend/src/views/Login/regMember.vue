@@ -62,8 +62,10 @@ export default {
     console.log(this.getStorage('MEMBER_INFO'));
   },
   watch:{
-    inputPhone(){
-      console.log(this.inputPhone.length);
+    inputPhone(bv){
+      if(bv > 13){
+        this.inputPhone = bv.slice(0, 13);
+      }
     }
   },
   methods:{
@@ -147,7 +149,7 @@ export default {
 }
 .info-box input{
   width:100%;
-  height:6vh;
+  height:2.5rem;
   box-sizing: border-box;
   border: 1px solid #efefef;
   border-radius : 0.3rem;
@@ -168,12 +170,12 @@ export default {
 .register-button{
   margin: 5vh 0 0 0;
   width: 100%;
-  height: 5vh;
+  height: 3rem;
   border-radius : 0.3rem;
   border: 1px solid #efefef;
   background: #4060d4;
   color: white;
-  height:6vh; 
+  height:3rem; 
 }
 span > span{
   color: red;

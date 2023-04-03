@@ -1,5 +1,7 @@
 <template>
-  <div>호텔찾기</div>
+  <div class="contents">
+    호텔찾기
+  </div>
 </template>
 
 <script>

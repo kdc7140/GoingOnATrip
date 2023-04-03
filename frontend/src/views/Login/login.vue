@@ -92,7 +92,7 @@ body{
 }
 .login input{
   width:100%;
-  height:6vh;
+  height:2.5rem;
   box-sizing: border-box;
   border: 1px solid #efefef;
   border-radius : 0.3rem;
@@ -108,9 +108,9 @@ body{
   box-sizing: border-box;
 }
 .btn_login{
-  margin: 9vh 0 0 0;
+  margin: 5rem 0 0 0;
   width: 100%;
-  height: 5vh;
+  /*height: 5vh;*/
   border-radius : 0.3rem;
   border: 1px solid #efefef;
   background: #4060d4;

@@ -57,8 +57,32 @@ export default {
 
     //storage 데이터 저장
     setStorage(key, value) {
+      console.log(key, value);
       if (isMorpheus()) {
-        M.data.storage(key, value);
+        if (key == "MEMBER_INFO") {
+          let memArr = [value];
+          if (M.data.storage(key) !== '') {
+            memArr.push(M.data.storage(key));  
+          }
+          M.data.storage(key, memArr);
+        } else if (key == "CHANGE_MEMBER_INFO") {
+          let memArr = [value];
+          if (M.data.storage(key) !== "") {
+            memArr.push(M.data.storage(key));
+          }
+          memArr.forEach((item) => {
+            if (item.id == value.id) {
+              item.id = value.id;
+              item.pw = value.pw;
+              item.name = paylvalueoad.name;
+              item.birth = value.birth;
+              item.phoneNum = value.phoneNum;
+            }
+          });
+          M.data.storage(key, memArr);
+        } else {
+          M.data.storage(key, value);
+        }
       } else {
         this.$store.commit("storage/" + key, value);
       }
