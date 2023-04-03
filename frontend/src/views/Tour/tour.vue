@@ -1,6 +1,5 @@
 <template>
   <div class="contents">
-    
     <div class="btn-box">
       <div class="top-txt">
         <h3>지역을 선택해주세요</h3>
@@ -43,12 +42,16 @@
       </div>
 
       <div class="sigungu-box" v-show="!pageDepth">
-        <template v-for="(item,idx) in sigunguArr">
+        <!--<template v-for="(item,idx) in sigunguArr">
           <div v-if="idx%3 == 0 || idx == sigunguArr.length-1" :key="idx">
             <button @click="goTourInfo(item.code)" :key="item.code">{{ item.name }}</button>
           </div>
-          
-        </template>
+        </template>-->
+        <div>
+          <template v-for="(item) in sigunguArr">
+            <button @click="goTourInfo(item.code)" :key="item.code">{{ item.name }}</button>
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -83,7 +86,7 @@ export default {
       this.$router.push({
         path: '/tourLocation',
         query:{
-          locCode : code,
+          areaCode : code,
         }
       });
     },
@@ -112,16 +115,19 @@ export default {
 .top-txt > p{
   font-size: .9rem;
 }
-.top-btn-box{
-  margin-bottom: 2rem;
+.top-btn-box, .bottom-btn-box, .sigungu-box{
+  margin: 1rem 1rem 2.5rem 1rem;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
 .btn-box button{
   border: 1px solid #efefef;
   border-radius: 10px;
   background: #4060d4;
   color:white;
-  height: 2.5rem;
-  width : 6rem;
+  height: 2.6rem;
+  width : 6.2rem;
   margin: .2rem;
   font-weight: bold;
 }

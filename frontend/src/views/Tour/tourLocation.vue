@@ -9,17 +9,18 @@ export default {
   data(){
     return{
       festivalData : [],
+      areaCode: '',
     }
   },
   mounted(){
     console.log('지역 행사 정보');
-    this.callTourInfo;
-  },
-  props(){
-    areaCode = query.locCode;
+    const { areaCode } = this.$route.query;
+    this.areaCode = areaCode;
+    this.callTourInfo();
   },
   methods:{
     async callTourInfo(){
+      console.log(this.areaCode);
       let rst = await this.$MNetSend({
         url: `KorService1/searchFestival1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&eventStartDate=20230301&eventEndDate=20230331&areaCode=${this.areaCode}&${this.getServiceKey()}`,
       });
