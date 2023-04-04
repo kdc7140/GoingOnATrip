@@ -11,6 +11,7 @@
 <script>
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+//import CommonUtil from '@/common/CommonUtil';
 
 export default {
   name: "DefaultLayout",
@@ -25,6 +26,8 @@ export default {
     return {
       isChange: false,
     };
+  },
+  mounted(){
   },
   watch: {
     scrollTop(af,bf){

@@ -13,8 +13,8 @@ const main2 = () => import("../views/Main/home.vue");
 
 const hotel = () => import("../views/Accom/searchHotel.vue");
 
-const tour = () => import("../views/Tour/tour.vue");
-const tourLocation = () => import("../views/Tour/tourLocation.vue");
+const selectLoc = () => import("../views/Event/selectLoc.vue");
+const eventInfo = () => import("../views/Event/eventInfo.vue");
 
 const map = () => import("../views/Map/locMap.vue");
 
@@ -92,30 +92,30 @@ const router = new Router({
       },
     },
     {
-      path: "/tour",
-      name: "여행정보 찾기",
-      component: tour,
+      path: "/selectLoc",
+      name: "행사정보 찾기",
+      component: selectLoc,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "tour",
+        className: "selectLoc",
       },
     },
     {
-      path: "/tourLocation",
-      name: "여행정보",
-      component: tourLocation,
+      path: "/eventInfo",
+      name: "행사정보",
+      component: eventInfo,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "tourLocation",
+        className: "location",
       },
     },
     {
       path: "/map",
       name: "행사정보 알아보기",
-      component: map,
+      component: eventInfo,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "map",
+        className: "eventInfo",
       },
     },
     {

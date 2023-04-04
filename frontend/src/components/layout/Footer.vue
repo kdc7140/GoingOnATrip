@@ -61,23 +61,23 @@ footer span{
   color: #7a7a7a;
 }
 .footer-first{
-  background-image: url("../../assets/img/ico-home.png");
+  background-image: url("../../assets/img/ico-f-home.png");
   background-size : 100% 100%;
   border: 1px solid #ffffff;
 }
 .footer-second{
-  background-image: url("../../assets/img/ico-tour.png");
+  background-image: url("../../assets/img/ico-f-tour.png");
   background-size : 100% 100%;
   border: 1px solid #ffffff;
   background-color: white;
 }
 .footer-third{
-  background-image: url("../../assets/img/ico-map.png");
+  background-image: url("../../assets/img/ico-f-map.png");
   background-size : 100% 100%;
   border: 1px solid #ffffff;
 }
 .footer-last{
-  background-image: url("../../assets/img/ico-set.png");
+  background-image: url("../../assets/img/ico-f-set.png");
   background-size : 100% 100%;
   border: 1px solid #ffffff;
   /* margin-top: 1%; */

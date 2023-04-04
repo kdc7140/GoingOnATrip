@@ -14,14 +14,14 @@
 
       <div class="menuBox">
         <div class="menuBox-Line">
-          <div @click="movePage('/hotel')"><button class="btn-main-ico hotel2"></button><span>숙소</span></div>
-          <div @click="movePage('/tour')"><button class="btn-main-ico tour2"></button><span>관광</span></div>
-          <div @click="movePage('/map')"><button class="btn-main-ico camping"></button><span>캠핑</span></div>
-					<div @click="movePage('/rent')"><button class="btn-main-ico car"></button><span>렌트카</span></div>
+          <div @click="movePage('/hotel')"><button class="btn-main-ico hotel"></button><span>숙소</span></div>
+          <div @click="movePage('/tour')"><button class="btn-main-ico tour"></button><span>여행</span></div>
+          <div @click="movePage('/selectLoc')"><button class="btn-main-ico event"></button><span>행사</span></div>
+					<div @click="movePage('/camping')"><button class="btn-main-ico camping"></button><span>캠핑</span></div>
         </div>
         <div class="menuBox-Line">
-          <div><button class="btn-main-ico hotel"></button><span>숙소</span></div>
-          <div><button class="btn-main-ico tour"></button><span>관광</span></div>
+          <div @click="movePage('/pet')"><button class="btn-main-ico pet"></button><span>w.반려동물</span></div>
+          <div @click="movePage('/rent')"><button class="btn-main-ico car"></button><span>렌트카</span></div>
           <div><button class="btn-main-ico map"></button><span>지도</span></div>
 					<div><button class="btn-main-ico map"></button><span>지도</span></div>
         </div>
@@ -30,20 +30,13 @@
       <div class="mainBox">
         <p>이달의 행사</p>
 				<swiper :options="swiperFestivalOption">
-					<!--<swiper-slide><img src="@/assets/img/main-img.png"></swiper-slide>
-					<swiper-slide><img src="@/assets/img/main-img.png"></swiper-slide>
-					<swiper-slide><img src="@/assets/img/main-img.png"></swiper-slide>-->
-					<template v-for="item in festivalData">
-						<swiper-slide :key="item.contentid"><img :src="item.firstimage"></swiper-slide>
-						
+					<template v-for="(item, idx) in festivalData">
+						<swiper-slide :key="item.contentid" v-show='item.isOpen'><img :src="item.firstimage" @load="sildeView(item,idx)"></swiper-slide>
 					</template>
-					
 					<div class="swiper-store-pagination swiper-pagination" slot="pagination"></div>
 				</swiper>
-        
       </div>
 
-      
     </div>
 		
 	</div>
@@ -53,6 +46,8 @@
 
 import 'swiper/css/swiper.css'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import Vue from 'vue';
+
 
 export default {
   name: "mainBoard",
@@ -66,6 +61,7 @@ export default {
   data() {
     return {
 			festivalData: [],
+      slideViewYN : 'Y',
 
 			swiperFestivalOption:{
 				slidesPerView: '1',
@@ -103,20 +99,31 @@ export default {
   },
 
   methods: {
-
     async callTourInfo(){
       let rst = await this.$MNetSend({
-        url: `KorService1/searchFestival1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&eventStartDate=20230301&eventEndDate=20230331&${this.getServiceKey()}`,
+        url: `KorService1/searchFestival1?numOfRows=15&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&eventStartDate=20230301&eventEndDate=20230331&${this.getServiceKey()}`,
       });
 
       console.log(rst);
 
 			this.festivalData = rst.response.body.items.item;
+
+      this.festivalData.forEach((item, idx) => {
+        Vue.set(item, 'isOpen', true);
+      });
     },
 
     movePage(url){
       this.$router.push(url);
     },
+
+    sildeView(item, idx){
+      if(document.querySelectorAll('.mainBox .swiper-slide')[idx].offsetHeight > 450){
+        Vue.set(item, 'isOpen', true);
+      }else{
+        Vue.set(item, 'isOpen', false);
+      }
+    }
 
   },
   
@@ -192,35 +199,29 @@ export default {
   background-image: url("../../assets/img/ico-tour.png");
   background-size : 100% 100%;
 }
-.menuBox-Line .map{
-  background-image: url("../../assets/img/ico-map.png");
-  background-size : 100% 100%;
-}
-.menuBox-Line .car{
-  background-image: url("../../assets/img/ico-car.png");
-  background-size : 100% 100%;
-}
-
-.menuBox-Line .hotel2{
-  background-image: url("../../assets/img/ico-hotel2.png");
-  background-size : 100% 100%;
-}
-.menuBox-Line .tour2{
-  background-image: url("../../assets/img/ico-tour2.png");
-  background-size : 100% 100%;
-}
-.menuBox-Line .map2{
-  background-image: url("../../assets/img/ico-map2.png");
-  background-size : 100% 100%;
-}
-.menuBox-Line .car2{
-  background-image: url("../../assets/img/ico-car2.png");
+.menuBox-Line .event{
+  background-image: url("../../assets/img/ico-event.png");
   background-size : 100% 100%;
 }
 .menuBox-Line .camping{
   background-image: url("../../assets/img/ico-camping.png");
   background-size : 100% 100%;
 }
+.menuBox-Line .pet{
+  background-image: url("../../assets/img/ico-pet.png");
+  background-size : 100% 100%;
+}
+.menuBox-Line .car{
+  background-image: url("../../assets/img/ico-car.png");
+  background-size : 100% 100%;
+}
+.menuBox-Line .map{
+  background-image: url("../../assets/img/ico-map.png");
+  background-size : 100% 100%;
+}
+
+
+
 
 .mainBox{
   margin: 6%;

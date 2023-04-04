@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import Define from "@/common/define";
-//import CommonUtil from "@/utils/CommonUtil";
+import CommonUtil from "@/common/commonUtil";
 //import NativeUtil from "@/utils/NativeUtil";
 
 import EventBus, { $popAlert, $popConfirm, $list } from "@/common/EventBus";
@@ -20,8 +20,7 @@ export default {
 
     // vue 공통 method 주입
     Vue.prototype.Define = Define;
-    //Vue.prototype.CommonUtil = CommonUtil;
-    //Vue.prototype.NativeUtil = NativeUtil;
+    Vue.prototype.CommonUtil = CommonUtil;
     Vue.prototype.$axios = axiosInstance;
 
     Vue.prototype.$popAlert = $popAlert;
