@@ -237,7 +237,7 @@ export default {
 }
 
 .swiper-container {overflow: visible;}
-.swiper-slide {opacity:0.4; transition:opacity 0.3s;}
+/*.swiper-slide {opacity:0.4; transition:opacity 0.3s;}*/
 .swiper-slide-active,
 .swiper-slide-active + .swiper-slide,
 .swiper-slide-active + .swiper-slide + .swiper-slide,
