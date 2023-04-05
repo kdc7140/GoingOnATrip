@@ -15,6 +15,7 @@ const hotel = () => import("../views/Accom/searchHotel.vue");
 
 const selectLoc = () => import("../views/Event/selectLoc.vue");
 const eventInfo = () => import("../views/Event/eventInfo.vue");
+const eventMap = () => import("../views/Event/eventMap.vue");
 
 const map = () => import("../views/Map/locMap.vue");
 
@@ -106,16 +107,16 @@ const router = new Router({
       component: eventInfo,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "location",
+        className: "eventInfo",
       },
     },
     {
-      path: "/map",
-      name: "행사정보 알아보기",
-      component: eventInfo,
+      path: "/eventMap",
+      name: "행사 지도보기",
+      component: eventMap,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
-        className: "eventInfo",
+        className: "eventMap",
       },
     },
     {

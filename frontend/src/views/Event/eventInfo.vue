@@ -14,7 +14,7 @@
             <span>주소 : {{ item.addr1 }}</span>
             <span>일시 : {{ item.eventstartdate }}~{{ item.eventenddate }}</span>
             <span>전화 : {{ item.tel }}</span>
-            <button>지도보기</button>
+            <button @click="viewMap">지도보기</button>
           </div>
         </div>
       </template>
@@ -39,7 +39,6 @@ export default {
   },
   mounted(){
     console.log('지역 행사 정보');
-    console.log(CommonUtil.isEmpty(this.festivalData));
     const { selectArea } = this.$route.query;
     this.selectArea = selectArea;
     this.areaCode = selectArea.areaCode;
@@ -57,6 +56,9 @@ export default {
 
 			this.festivalData = rst.response.body.items.item;
     },
+    viewMap(){
+      this.$router.push('/eventMap');
+    }
   }
 }
 </script>

@@ -59,7 +59,7 @@
 
 <script scope>
 export default {
-  name: "tourInfo",
+  name: "eventInfo",
   data(){
     return{
       pageDepth : true,
