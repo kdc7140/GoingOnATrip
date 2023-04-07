@@ -14,7 +14,7 @@
             <span>주소 : {{ item.addr1 }}</span>
             <span>일시 : {{ item.eventstartdate }}~{{ item.eventenddate }}</span>
             <span>전화 : {{ item.tel }}</span>
-            <button @click="viewMap">지도보기</button>
+            <button @click="viewMap(item)">지도보기</button>
           </div>
         </div>
       </template>
@@ -56,8 +56,13 @@ export default {
 
 			this.festivalData = rst.response.body.items.item;
     },
-    viewMap(){
-      this.$router.push('/eventMap');
+    viewMap(data){
+      this.$router.push({
+        path : '/eventMap',
+        query:{
+          eventInfo: data,
+        }
+      });
     }
   }
 }
