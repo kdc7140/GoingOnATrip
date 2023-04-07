@@ -62,7 +62,7 @@ export default {
       this.drawInfoWindow();
     },
     drawInfoWindow(){
-      var iwContent = `<div class="overlay-dev" style="padding:5px;">${this.eventInfo.addr1}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      var iwContent = `<div class="overlaybox " style="padding:5px;">${this.eventInfo.addr1}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
       var iwPosition = new kakao.maps.LatLng(this.eventInfo.mapy, this.eventInfo.mapx); //인포윈도우 표시 위치입니다
 
       // 인포윈도우를 생성합니다
@@ -78,13 +78,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #map {
   width: 100%;
   height: 400px;
 }
-.overlay-dev{
-  border: 1px solid #efefef;
-  background-color: #4060d4;
+.overlaybox {
+  position:relative;
+  width:auto;
+  height:auto;
+  background: #4060d4;
+  color: white;
+  border-radius : 0.3rem;
 }
 </style>
