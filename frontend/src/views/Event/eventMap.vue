@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contents">
     <div id="map"></div>
   </div>
 </template>
@@ -12,7 +12,8 @@ export default {
       // map 객체 설정
       map: null,
       marker: '',
-      eventInfo: {}
+      eventInfo: {},
+      customOverlays : [],
     };
   },
   mounted() {
@@ -62,17 +63,29 @@ export default {
       this.drawInfoWindow();
     },
     drawInfoWindow(){
-      var iwContent = `<div class="overlaybox " style="padding:5px;">${this.eventInfo.addr1}</div>`; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      var iwPosition = new kakao.maps.LatLng(this.eventInfo.mapy, this.eventInfo.mapx); //인포윈도우 표시 위치입니다
+      var content = document.createElement('div');
+      content.classList.add('overlaybox');
+      // content.style.cssText = "background-color:white;color:blue;border-radius:4px;"
+      content.innerText = this.eventInfo.addr1;
+      content.onclick = () =>{
+        this.viewEventInfo();
+      };
 
-      // 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
-          position : iwPosition, 
-          content : iwContent 
+      var position = new kakao.maps.LatLng(this.eventInfo.mapy, this.eventInfo.mapx);  
+
+      // 커스텀 오버레이를 생성합니다
+      var customOverlay = new kakao.maps.CustomOverlay({
+          position: position,
+          content: content   
       });
-        
-      // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-      infowindow.open(this.map, this.marker); 
+
+      // 커스텀 오버레이를 지도에 표시합니다
+      customOverlay.setMap(this.map);
+      
+
+    },
+    viewEventInfo(){
+      console.log("success!!!!!");
     }
   },
 };
@@ -81,14 +94,17 @@ export default {
 <style>
 #map {
   width: 100%;
-  height: 400px;
+  height: 100%;
 }
 .overlaybox {
   position:relative;
-  width:auto;
-  height:auto;
+  top: -3.5rem;
+  font-size: .8rem;
+  /* width:auto; */
+  /* height:auto; */
   background: #4060d4;
   color: white;
   border-radius : 0.3rem;
+  padding:5px;
 }
 </style>

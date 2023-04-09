@@ -40,9 +40,9 @@ export default {
   mounted(){
     console.log('지역 행사 정보');
     const { selectArea } = this.$route.query;
-    this.selectArea = selectArea;
-    this.areaCode = selectArea.areaCode;
-    this.sigunguCode = selectArea.sigunguCode;
+    this.selectArea = JSON.parse(selectArea);
+    this.areaCode = this.selectArea.areaCode;
+    this.sigunguCode = this.selectArea.sigunguCode;
     this.callTourInfo();
   },
   methods:{

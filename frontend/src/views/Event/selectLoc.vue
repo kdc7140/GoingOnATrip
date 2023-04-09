@@ -96,7 +96,7 @@ export default {
       this.$router.push({
         path: '/eventInfo',
         query:{
-          selectArea : this.selectArea,
+          selectArea : JSON.stringify(this.selectArea),
         }
       });
     },
