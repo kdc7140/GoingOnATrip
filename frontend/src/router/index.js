@@ -14,6 +14,7 @@ const main2 = () => import("../views/Main/home.vue");
 const hotel = () => import("../views/Accom/searchHotel.vue");
 
 const tour = () => import("../views/Tour/tour.vue");
+const tourInfo = () => import("../views/Tour/tourInfo.vue");
 
 const selectLoc = () => import("../views/Event/selectLoc.vue");
 const eventInfo = () => import("../views/Event/eventInfo.vue");
@@ -96,11 +97,20 @@ const router = new Router({
     },
     {
       path: "/tour",
-      name: "여행정보",
+      name: "여행정보 찾기",
       component: tour,
       meta: {
         layout: Define.LAYOUT_TYPE.DEFAULT,
         className: "tour",
+      },
+    },
+    {
+      path: "/tourInfo",
+      name: "여행정보",
+      component: tourInfo,
+      meta: {
+        layout: Define.LAYOUT_TYPE.DEFAULT,
+        className: "tourInfo",
       },
     },
     {
