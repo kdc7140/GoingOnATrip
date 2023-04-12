@@ -33,7 +33,6 @@
         areaCode: '',
         sigunguCode: '',
         selectArea : {},
-        
       }
     },
     mounted(){
