@@ -6,6 +6,9 @@
           <h3 v-if="CommonUtil.isEmpty(festivalData)">{{ selectArea.si }} {{ selectArea.gun }} 관광정보가 없습니다.</h3>
           <span v-if="!CommonUtil.isEmpty(festivalData)">관심있는 관광 정보를 찾아보세요</span>
         </div>
+        <select v-model="selectedItem" @change="selectedCode">
+          <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
+        </select>
         <template v-for="(item,idx) in festivalData">
           <div class="event-list-box" :key="item.contentid">
             <img :src="item.firstimage2">
@@ -33,6 +36,18 @@
         areaCode: '',
         sigunguCode: '',
         selectArea : {},
+        selectedItem : "",
+        // 12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점
+        selectList: [
+          { name: "선택해주세요.", value: "" },
+          { name: "관광지", value: "12" },
+          { name: "문화시설", value: "14" },
+          { name: "축제공연행사", value: "15" },
+          { name: "여행코스", value: "25" },
+          { name: "레포츠", value: "28" },
+          { name: "쇼핑", value: "38" },
+        ],
+        
       }
     },
     mounted(){
@@ -61,6 +76,10 @@
             eventInfo: data,
           }
         });
+      },
+      selectedCode(){
+        console.log(this.selectedItem);
+        // console.log(evt.target.value);
       }
     }
   }

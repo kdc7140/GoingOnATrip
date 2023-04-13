@@ -1,8 +1,20 @@
 <template>
     <div class="contents">
+      <div class="top-line">원하는 정보를 찾아보세요.</div>
+      <div class="menu-line">
+        <select v-model="selectedItem" @change="selectedCode">
+          <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
+        </select>
+        <select v-model="selectedItem" @change="selectedCode">
+          <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
+        </select>
+        <select v-model="selectedItem" @change="selectedCode">
+          <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
+        </select>
+        <button>검색</button>
+      </div>
       <div class="btn-box">
         <div class="top-txt">
-          <h3>지역을 선택해주세요</h3>
           <span>선택한 지역에서 진행중인 행사정보를 확인할 수 있어요</span>
           <p v-show="!pageDepth" @click="pageDepth=true">지역선택으로 돌아가기 > </p>
         </div>
@@ -69,7 +81,18 @@
           gun: '',
           areaCode: '',
           sigunguCode: '',
-        }
+        },
+        selectedItem : "",
+        // 12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점
+        selectList: [
+          { name: "선택해주세요.", value: "" },
+          { name: "관광지", value: "12" },
+          { name: "문화시설", value: "14" },
+          { name: "축제공연행사", value: "15" },
+          { name: "여행코스", value: "25" },
+          { name: "레포츠", value: "28" },
+          { name: "쇼핑", value: "38" },
+        ],
       }
     },
     mounted(){
@@ -100,12 +123,24 @@
           }
         });
       },
+
+      selectedCode(){
+        console.log(this.selectedItem);
+        // console.log(evt.target.value);
+      }
       
     }
   }
   </script>
   
   <style>
+  .top-line{
+    text-align: center;
+    background-color: #4060d4;
+    color: white;
+    font-size: .8rem;
+    padding: .3rem;
+  }
   .btn-box{
     padding: 1rem;  
   }
