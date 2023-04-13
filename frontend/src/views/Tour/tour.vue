@@ -2,69 +2,35 @@
     <div class="contents">
       <div class="top-line">원하는 정보를 찾아보세요.</div>
       <div class="menu-line">
-        <select v-model="selectedItem" @change="selectedCode">
+        <select class="select-box" v-model="areaCode" @change="changeSi">
+          <option v-for="(item, index) in siList" :key="index" :value="item.value" >{{ item.name }}</option>
+        </select>
+        <select class="select-box" v-model="sigunguCode" @change="changeGungu">
+          <option v-for="(item, index) in gunGuList" :key="index" :value="item.value" >{{ item.name }}</option>
+        </select>
+        <select class="select-box" v-model="selectedItem" @change="selectedCode">
           <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
         </select>
-        <select v-model="selectedItem" @change="selectedCode">
-          <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
-        </select>
-        <select v-model="selectedItem" @change="selectedCode">
-          <option v-for="(item, index) in selectList" :key="index" :value="item.value" >{{ item.name }}</option>
-        </select>
-        <button>검색</button>
+        <button class="btn-search" @click="callTourInfo">검색</button>
       </div>
-      <div class="btn-box">
+      <div class="event-box">
         <div class="top-txt">
-          <span>선택한 지역에서 진행중인 행사정보를 확인할 수 있어요</span>
+          <span>선택한 지역의 여행정보를 확인할 수 있어요.</span>
           <p v-show="!pageDepth" @click="pageDepth=true">지역선택으로 돌아가기 > </p>
         </div>
-        
-        <div class="top-btn-box" v-show="pageDepth">
-          <div>
-            <button @click="getSigunguCode(1), selectArea.si='서울시'">서울</button>
-            <button @click="getSigunguCode(2), selectArea.si='인천시'">인천</button>
-            <button @click="getSigunguCode(3), selectArea.si='대전시'">대전</button>
-          </div>
-          <div>
-            <button @click="getSigunguCode(4), selectArea.si='대구시'">대구</button>
-            <button @click="getSigunguCode(5), selectArea.si='광주시'">광주</button>
-            <button @click="getSigunguCode(7), selectArea.si='울산시'">울산</button>
-          </div>
-          <div>
-            <button @click="getSigunguCode(6), selectArea.si='부산시'">부산</button>
-          </div>
-        </div>
-  
-        <div class="bottom-btn-box" v-show="pageDepth">
-          <div>
-            <button @click="getSigunguCode(31), selectArea.si='경기도'">경기도</button>
-            <button @click="getSigunguCode(32), selectArea.si='강원도'">강원도</button>
-            <button @click="getSigunguCode(33), selectArea.si='충북'">충청북도</button>
-          </div>
-          <div>
-            <button @click="getSigunguCode(34), selectArea.si='충남'">충청남도</button>
-            <button @click="getSigunguCode(35), selectArea.si='경북'">경상북도</button>
-            <button @click="getSigunguCode(36), selectArea.si='경남'">경상남도</button>
-          </div>
-          <div>
-            <button @click="getSigunguCode(37), selectArea.si='전북'">전라북도</button>
-            <button @click="getSigunguCode(38), selectArea.si='전남'">전라남도</button>
-            <button @click="getSigunguCode(39), selectArea.si='제주도'">제주도</button>
-          </div>
-        </div>
-  
-        <div class="sigungu-box" v-show="!pageDepth">
-          <!--<template v-for="(item,idx) in sigunguArr">
-            <div v-if="idx%3 == 0 || idx == sigunguArr.length-1" :key="idx">
-              <button @click="goTourInfo(item.code)" :key="item.code">{{ item.name }}</button>
+
+        <template v-for="(item,idx) in festivalData">
+          <div class="event-list-box" :key="item.contentid">
+            <img :src="item.firstimage2">
+            <div class="event-info">
+              <h4>{{ item.title }}</h4>
+              <button @click="viewMap(item)">지도보기</button>
+              <span>주소 : {{ item.addr1 }}</span>
             </div>
-          </template>-->
-          <div>
-            <template v-for="(item) in sigunguArr">
-              <button @click="goTourInfo(item.code,item.name)" :key="item.code">{{ item.name }}</button>
-            </template>
           </div>
-        </div>
+        </template>
+
+
       </div>
     </div>
   </template>
@@ -76,12 +42,35 @@
       return{
         pageDepth : true,
         sigunguArr: [],
-        selectArea: {
-          si: '',
-          gun: '',
-          areaCode: '',
-          sigunguCode: '',
-        },
+        areaCode: '',
+        sigunguCode: '',
+
+        selectedSi: '',
+        siList: [
+          { name: "선택해주세요.", value: "" },
+          { name: "서울특별시", value: "1" },
+          { name: "인천광역시", value: "2" },
+          { name: "대전광역시", value: "3" },
+          { name: "대구광역시", value: "4" },
+          { name: "광주광역시", value: "5" },
+          { name: "울산광역시", value: "7" },
+          { name: "부산광역시", value: "6" },
+          { name: "경기도", value: "31" },
+          { name: "강원도", value: "32" },
+          { name: "충청북도", value: "33" },
+          { name: "충청남도", value: "34" },
+          { name: "경상북도", value: "35" },
+          { name: "경상남도", value: "36" },
+          { name: "전라북도", value: "37" },
+          { name: "전라남도", value: "38" },
+          { name: "제주도", value: "39" },
+        ],
+
+        selectedGunGu: '',
+        gunGuList: [
+          { name: "선택해주세요.", value: "" },
+        ],
+
         selectedItem : "",
         // 12:관광지, 14:문화시설, 15:축제공연행사, 25:여행코스, 28:레포츠, 32:숙박, 38:쇼핑, 39:음식점
         selectList: [
@@ -93,42 +82,65 @@
           { name: "레포츠", value: "28" },
           { name: "쇼핑", value: "38" },
         ],
+
+        festivalData : [],
       }
     },
     mounted(){
       console.log('여행정보');
     },
     methods:{
+      //시군구 코드 조회
       async getSigunguCode(code){
         let rst = await this.$MNetSend({
           url: `KorService1/areaCode1?numOfRows=30&MobileOS=ETC&MobileApp=GOAT&areaCode=${code}&_type=json&${this.getServiceKey()}`,
         });
   
         console.log(rst);
-  
-        this.pageDepth = false;
-  
-        this.selectArea.areaCode = code;
-        this.sigunguArr = rst.response.body.items.item;
+        this.gunGuList = [{ name: "선택해주세요.", value: "" }];
+        rst.response.body.items.item.forEach((item,idx) => {
+          this.gunGuList.push({
+            name: item.name, value: item.code
+          });
+        });
       },
+      //시, 도 선택
+      changeSi(){
+        this.getSigunguCode(this.areaCode);
+      },
+      //군, 구 선택
+      changeGungu(){
+        if(this.areaCode === ""){
+          this.$popAlert("시, 도를 선택해주세요.");
+        }else{
+
+        }
+      },
+      //카테고리 선택
+      selectedCode(){
+        console.log(this.selectedItem);
+        // console.log(evt.target.value);
+      },
+      //여행정보 검색
+      async callTourInfo(){
+        console.log(this.areaCode);
+        let rst = await this.$MNetSend({
+          url: `KorService1/areaBasedList1?numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=GOAT&_type=json&arrange=Q&contentTypeId=${this.selectedItem}&areaCode=${this.areaCode}&sigunguCode=${this.sigunguCode}&${this.getServiceKey()}`,
+          
+        });
   
-      goTourInfo(code,name){
-        console.log(code,name);
-        this.selectArea.sigunguCode = code;
-        this.selectArea.gun = name;
+        console.log(rst);
+        this.festivalData = rst.response.body.items.item;
+      },
+      viewMap(data){
         this.$router.push({
-          path: '/tourInfo',
+          path : '/eventMap',
           query:{
-            selectArea : JSON.stringify(this.selectArea),
+            eventInfo: data,
           }
         });
       },
 
-      selectedCode(){
-        console.log(this.selectedItem);
-        // console.log(evt.target.value);
-      }
-      
     }
   }
   </script>
@@ -141,13 +153,28 @@
     font-size: .8rem;
     padding: .3rem;
   }
-  .btn-box{
-    padding: 1rem;  
+  .menu-line{
+    height: 2rem;
   }
-  
+  .select-box{
+    border: 1px solid #efefef;
+    height: 100%;
+    width: 28%;
+  }
+  .btn-search{
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    background: #4060d4;
+    color:white;
+    height: 100%;
+    width: 16%;
+  }
+  .event-box{
+    padding: 1rem;
+  }
   .top-txt{
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   .top-txt > h3{
     color:#4060d4;
@@ -160,20 +187,42 @@
   .top-txt > p{
     font-size: .9rem;
   }
-  .top-btn-box, .bottom-btn-box, .sigungu-box{
-    margin: 1rem 1rem 2.5rem 1rem;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: column;
+
+  .event-list-box{
+    display: block;
+    border-bottom: 1px solid #bcbcbc;
+    height: auto;
+    padding: 1rem;
   }
-  .btn-box button{
+  .event-list-box img{
+    height: 10rem;
+    width: 20rem;
+  }
+  .event-info{
+    display: block;
+    margin-left: 1rem;
+  }
+  .event-info h4{
+    /* margin-top: .2rem; */
+    margin-right: 1rem;
+    display: inline;
+  }
+  .event-info span{
+    display: block;
+    font-size: .8rem;
+    margin-top: .3rem;
+    margin-bottom: .3rem;
+    color: #7a7a7a;
+  }
+  .event-info button{
     border: 1px solid #efefef;
-    border-radius: 10px;
     background: #4060d4;
     color:white;
-    height: 2.6rem;
-    width : 6.2rem;
-    margin: .2rem;
+    height: 2rem;
+    width : 5rem;
+    margin-top: .4rem;
     font-weight: bold;
+    display: inline;
   }
+
   </style>
