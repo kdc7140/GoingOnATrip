@@ -17,6 +17,7 @@ export default {
     };
   },
   mounted() {
+    console.log('지도보기');
     const { eventInfo } = this.$route.query;
     this.eventInfo = eventInfo;
 
@@ -30,12 +31,18 @@ export default {
   methods: {
   	// api 불러오기
     loadScript() {
-      const script = document.createElement("script");
-      //autoload=false 가 없으면 지도 load시 메서드를 호출하는 로직이 적용되지 않아서 오류가 남
-      script.src ="//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=ee6ff6af8ff192fd64d9886bfec45459"; // &autoload=false api를 로드한 후 맵을 그리는 함수가 실행되도록 구현
-      script.onload = () => window.kakao.maps.load(this.loadMap); // 스크립트 로드가 끝나면 지도를 실행될 준비가 되어 있다면 지도가 실행되도록 구현
+      // const script = document.createElement("script");
+      // //autoload=false 가 없으면 지도 load시 메서드를 호출하는 로직이 적용되지 않아서 오류가 남
+      // script.src ="//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=ee6ff6af8ff192fd64d9886bfec45459"; // &autoload=false api를 로드한 후 맵을 그리는 함수가 실행되도록 구현
+      // script.onload = () => window.kakao.maps.load(this.loadMap); // 스크립트 로드가 끝나면 지도를 실행될 준비가 되어 있다면 지도가 실행되도록 구현
 
-      document.head.appendChild(script); // html>head 안에 스크립트 소스를 추가
+      // document.head.appendChild(script); // html>head 안에 스크립트 소스를 추가
+
+      const script = document.createElement("script");
+      /* global kakao */
+      script.onload = () => kakao.maps.load(this.loadMap);
+      script.src = "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=ee6ff6af8ff192fd64d9886bfec45459";
+      document.head.appendChild(script);
     },
     // 맵 출력하기
     loadMap() {

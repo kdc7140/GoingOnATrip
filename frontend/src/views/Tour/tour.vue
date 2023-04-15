@@ -1,6 +1,6 @@
 <template>
     <div class="contents">
-      <div class="top-line">원하는 정보를 찾아보세요.</div>
+      
       <div class="menu-line">
         <select class="select-box" v-model="areaCode" @change="changeSi">
           <option v-for="(item, index) in siList" :key="index" :value="item.value" >{{ item.name }}</option>
@@ -13,9 +13,10 @@
         </select>
         <button class="btn-search" @click="callTourInfo">검색</button>
       </div>
+      <div class="top-line">지역을 선택해 여행정보를 확인해보세요.</div>
       <div class="event-box">
         <div class="top-txt">
-          <span>선택한 지역의 여행정보를 확인할 수 있어요.</span>
+          <span>선택한 지역의 정보입니다.</span>
           <p v-show="!pageDepth" @click="pageDepth=true">지역선택으로 돌아가기 > </p>
         </div>
 
@@ -152,9 +153,13 @@
     color: white;
     font-size: .8rem;
     padding: .3rem;
+    height: 1.3rem;
+    display : flex;
+    justify-content : center;
+    align-items : center;
   }
   .menu-line{
-    height: 2rem;
+    height: 2.5rem;
   }
   .select-box{
     border: 1px solid #efefef;
