@@ -42,7 +42,7 @@ const router = new Router({
       component: intro,
     },
     {
-      path: "/인트로",
+      path: "/intro",
       name: "intro page",
       component: intro,
       //meta: {
