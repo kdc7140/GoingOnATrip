@@ -1,5 +1,5 @@
 {
-  "name":"GOAT",
+  "name": "GOAT",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "build:dev": "vue-cli-service build --mode dev"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.7",
     "array-merge-by-key": "^1.0.1",
     "array-move": "^4.0.0",
     "axios": "^0.25.0",
@@ -24,6 +25,7 @@
     "moment-timezone": "^0.5.34",
     "secure-ls": "^1.2.6",
     "swiper": "^5.2.1",
+    "v-calendar": "^2.4.1",
     "vue": "^2.6.11",
     "vue-advanced-cropper": "^1.10.1",
     "vue-awesome-swiper": "^4.1.1",
@@ -39,8 +41,7 @@
     "vue2-touch-events": "^3.2.2",
     "vuedraggable": "^2.24.3",
     "vuex": "^3.6.2",
-    "vuex-persistedstate": "^4.1.0",
-    "v-calendar" : "^2.4.1"
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

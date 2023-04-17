@@ -39,7 +39,7 @@ import vueMoment from "moment";
 Vue.use(vueMoment);
 
 import VCalendar from 'v-calendar';
-import 'v-calendar/style.css';
+import 'v-calendar/src/styles/base.css';
 Vue.use(VCalendar);
 
 // 모든 페이지에서 안드로이드 백키에 대한 공통처리
