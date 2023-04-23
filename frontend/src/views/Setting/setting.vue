@@ -1,6 +1,5 @@
 <template>
   <div>세팅</div>
-  
 </template>
 
 <script>
