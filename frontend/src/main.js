@@ -38,9 +38,9 @@ Vue.mixin(global);
 import vueMoment from "moment";
 Vue.use(vueMoment);
 
-import VCalendar from 'v-calendar';
-import 'v-calendar/src/styles/base.css';
-Vue.use(VCalendar);
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+Vue.use(Vuetify);
 
 // 모든 페이지에서 안드로이드 백키에 대한 공통처리
 const exit_pages = ["/"];
