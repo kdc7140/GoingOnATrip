@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script scope>
+<script>
 export default {
   name: "eventInfo",
   data(){
